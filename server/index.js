@@ -17,8 +17,15 @@ app.get('/search', (req, res) => {
   const url = new URL(`http://localhost:3000${req.url}`);
   const urlParams = new URLSearchParams(url.search);
   const searchQuery = urlParams.get('search');
-  console.log(`https://api.thingiverse.com/search/${searchQuery}?access_token=${process.env.THING_TOKEN}`)
-  axios.get(`https://api.thingiverse.com/search/${searchQuery}?access_token=${process.env.THING_TOKEN}`)
+  const page = urlParams.get('page');
+
+  axios.get(`https://api.thingiverse.com/search/${searchQuery}/`, {
+    params: {
+      access_token: process.env.THING_TOKEN,
+      sort: 'relevant',
+      page: page
+    }
+  })
     .then((success) => {
       res.send(success.data)
     })
@@ -27,6 +34,11 @@ app.get('/search', (req, res) => {
     })
 })
 
+app.post('/update', (req, res) => {
+  console.log(req.body)
+  // console.log({name, public_url, preview_image, category})
+
+})
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
