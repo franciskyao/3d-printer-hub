@@ -16,18 +16,22 @@ function App() {
   useEffect(() => {
   }, [setDbList])
 
+  function updateList() {
+    console.log('List got updated')
+
+  }
   //searchResult = data from search? Should this be in app level?
-  //dbList = data from database that needs to be sorted into their categories
+  //dbList = data from database that needs to be sorted into their category
   //passdown set dblist to searchResultList
   //when the user selects a category and add save
   //  update database with new entry
   //  sort database rows in their corresponding list
   //
 
-  console.log(mockData[0])
+  // console.log(mockData[0])
   return (
     <div>
-      <Search setDbList={setDbList}/>
+      <Search setDbList={setDbList} updateList={updateList}/>
       <PrinterList />
       <ExtruderList />
       <HotendList />
