@@ -4,6 +4,7 @@ import ExtruderEntry from './ExtruderEntry.jsx'
 function ExtruderList () {
   return (
     <div>
+      <ExtruderEntry />
     </div>
   )
 }

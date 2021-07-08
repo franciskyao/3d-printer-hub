@@ -44,6 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["axios", "npm:0.21.1"],
             ["babel-loader", "virtual:87a5e4882610048c21e58b3bd36f891fb5b290107321fa8f45f47016acea9995deefdc0338ccfa4c9a703b9fefc76317b70af0c4ff32ad8600bb9260f5fa9755#npm:8.2.2"],
             ["body-parser", "npm:1.19.0"],
+            ["dotenv", "npm:10.0.0"],
             ["express", "npm:4.17.1"],
             ["nodemon", "npm:2.0.9"],
             ["path", "npm:0.12.7"],
@@ -67,6 +68,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["axios", "npm:0.21.1"],
             ["babel-loader", "virtual:87a5e4882610048c21e58b3bd36f891fb5b290107321fa8f45f47016acea9995deefdc0338ccfa4c9a703b9fefc76317b70af0c4ff32ad8600bb9260f5fa9755#npm:8.2.2"],
             ["body-parser", "npm:1.19.0"],
+            ["dotenv", "npm:10.0.0"],
             ["express", "npm:4.17.1"],
             ["nodemon", "npm:2.0.9"],
             ["path", "npm:0.12.7"],
@@ -3865,6 +3867,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["dot-prop", "npm:5.3.0"],
             ["is-obj", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["dotenv", [
+        ["npm:10.0.0", {
+          "packageLocation": "./.yarn/cache/dotenv-npm-10.0.0-36b272df25-9c45712e21.zip/node_modules/dotenv/",
+          "packageDependencies": [
+            ["dotenv", "npm:10.0.0"]
           ],
           "linkType": "HARD",
         }]
