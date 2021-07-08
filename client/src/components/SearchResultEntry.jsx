@@ -8,11 +8,11 @@ function SearchResultEntry(props) {
 
   function addToDb() {
     console.log('Add data to db');
-    axios.post('/update', {
+    axios.post('/addproject', {
       name: name,
-      public_url, public_url,
+      public_url: public_url,
       preview_image: preview_image,
-      category, category
+      category: category
     })
       .then((success) => {
         props.updateList();

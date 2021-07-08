@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 const axios = require("axios");
+const pgMethods = require('../db/controller')
 require('dotenv').config();
 
 app.use(express.json());
@@ -10,7 +11,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World!');
 })
 
 app.get('/search', (req, res) => {
@@ -34,11 +35,10 @@ app.get('/search', (req, res) => {
     })
 })
 
-app.post('/update', (req, res) => {
-  console.log(req.body)
-  // console.log({name, public_url, preview_image, category})
-
+app.post('/addproject', (req, res) => {
+  pgMethods.addProject(req, res);
 })
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
