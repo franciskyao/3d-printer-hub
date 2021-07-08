@@ -14,9 +14,7 @@ function SearchResultEntry(props) {
       preview_image: preview_image,
       category: category
     })
-      .then((success) => {
-        props.updateList();
-      })
+      .then((success) => props.updateList())
       .catch(() => console.log('Failed to add in DB'))
   }
 
