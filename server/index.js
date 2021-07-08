@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 })
 
+app.get('/getmodels', (req, res) => {
+  pgMethods.getAll(req, res)
+})
+
 app.get('/search', (req, res) => {
   const url = new URL(`http://localhost:3000${req.url}`);
   const urlParams = new URLSearchParams(url.search);
