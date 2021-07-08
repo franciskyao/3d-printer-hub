@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import Search from './Search.jsx'
 import PrinterList from './PrinterList.jsx'
 import HotendList from './HotendList.jsx'
@@ -14,28 +15,42 @@ function App() {
   const [projectList, setProjectList] = useState(null);
 
   useEffect(() => {
+
   }, [setDbList])
 
   function updateList() {
     console.log('List got updated')
+    axios.get('/getmodels')
+      .then((models) => {
+        const dataInDb = models.data.rows;
+        console.log(dataInDb)
+        const hotends = [];
+        const extruders = [];
+        const projects = [];
 
+        dataInDb.forEach((model) => {
+          if (model.category === 'hotend') {
+            hotends.push(model);
+          } else if (model.category === 'extruder') {
+            extruders.push(model);
+          } else if (model.category === 'project') {
+            projects.push(model);
+          }
+        })
+        setHotendList(hotends);
+        setExtruderList(extruders);
+        setProjectList(projects)
+      })
+      .catch((err) => console.log('Failed to get projects'))
   }
-  //searchResult = data from search? Should this be in app level?
-  //dbList = data from database that needs to be sorted into their category
-  //passdown set dblist to searchResultList
-  //when the user selects a category and add save
-  //  update database with new entry
-  //  sort database rows in their corresponding list
-  //
 
-  // console.log(mockData[0])
   return (
     <div>
       <Search setDbList={setDbList} updateList={updateList}/>
-      <PrinterList />
-      <ExtruderList />
-      <HotendList />
-      <ProjectList />
+      {printerList && <PrinterList />}
+      {extruderList && <ExtruderList />}
+      {hotendList &&<HotendList />}
+      {projectList && <ProjectList />}
     </div>
   )
 }
