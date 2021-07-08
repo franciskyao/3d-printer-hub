@@ -9,8 +9,13 @@ const pool = new Pool ({
   port: 5432,
 })
 
-const getList = function(req, res) {
-
+const getAll = function(req, res) {
+  pool.query('SELECT * FROM projects3d')
+    .then((success) => res.send(success))
+    .catch((err) => {
+      console.log('Failed to retrieve projects');
+      res.end();
+    })
 }
 
 const addProject = function(req, res) {
@@ -27,6 +32,6 @@ const removeProject = function(req, res) {
 
 }
 
-module.exports.getList = getList;
+module.exports.getAll = getAll;
 module.exports.addProject = addProject;
 module.exports.removeProject = removeProject;
