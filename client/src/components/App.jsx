@@ -15,8 +15,8 @@ function App() {
   const [projectList, setProjectList] = useState(null);
 
   useEffect(() => {
-
-  }, [setDbList])
+    updateList()
+  }, [])
 
   function updateList() {
     console.log('List got updated')
@@ -46,11 +46,12 @@ function App() {
 
   return (
     <div>
+      {/* <iframe src="http://10.0.0.133/webcam/?action=stream" height="300" width="720"></iframe> */}
       <Search setDbList={setDbList} updateList={updateList}/>
-      {printerList && <PrinterList />}
-      {extruderList && <ExtruderList />}
-      {hotendList &&<HotendList />}
-      {projectList && <ProjectList />}
+      <PrinterList />
+      {extruderList && <ExtruderList extruderList={extruderList}/>}
+      {hotendList &&<HotendList hotendList={hotendList}/>}
+      {projectList && <ProjectList projectList={projectList}/>}
     </div>
   )
 }
