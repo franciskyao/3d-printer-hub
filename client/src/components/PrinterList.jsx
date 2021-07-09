@@ -18,6 +18,7 @@ function PrinterList () {
       <label>Enter Printer Address:</label><br />
         <input type="text" id="address" value="http://10.0.0.133"></input>
         <input type="button" onClick={addPrinter} value="Add Printer"></input>
+      <h2>Active Printers</h2>
       {printerList && printerList.map((printer) => <PrinterEntry printer={printer} />)}
     </div>
   )

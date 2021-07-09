@@ -1,9 +1,19 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 function ProjectEntry (props) {
+  const { id, proj_name, public_url: url, preview_image: img } = props.project
+
+  const removeEntry = function() {
+    axios.delete('/remove', {params: {id: id}})
+      .then((success) => props.updateList())
+      .catch((err) => console.log('Entry removed'))
+  }
+
   return (
     <div>
-      I am project 1
+    <input type="button" onClick={removeEntry} value="&times;"></input>
+      <a href={url}>{proj_name}</a>
     </div>
   )
 }

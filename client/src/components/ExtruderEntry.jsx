@@ -12,8 +12,8 @@ function ExtruderEntry (props) {
 
   return (
     <div>
+    <input type="button" onClick={removeEntry} value="&times;"></input>
       <a href={url}>{proj_name}</a>
-      <input type="button" onClick={removeEntry} value="&times;"></input>
     </div>
   )
 }
