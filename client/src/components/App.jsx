@@ -24,7 +24,6 @@ function App() {
     axios.get('/getmodels')
       .then((models) => {
         const dataInDb = models.data.rows;
-        console.log(dataInDb)
         const hotends = [];
         const extruders = [];
         const projects = [];
@@ -50,8 +49,8 @@ function App() {
       <Search setDbList={setDbList} updateList={updateList}/>
       <PrinterList />
       {extruderList && <ExtruderList extruderList={extruderList} updateList={updateList}/>}
-      {hotendList &&<HotendList hotendList={hotendList}/>}
-      {projectList && <ProjectList projectList={projectList}/>}
+      {hotendList &&<HotendList hotendList={hotendList} updateList={updateList}/>}
+      {projectList && <ProjectList projectList={projectList} updateList={updateList}/>}
     </div>
   )
 }

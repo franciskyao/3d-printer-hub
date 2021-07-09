@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 function HotendEntry (props) {
   const { id, proj_name, public_url: url, preview_image: img } = props.hotend

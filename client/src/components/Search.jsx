@@ -30,6 +30,10 @@ function Search (props) {
       .catch((err) => console.log(err))
   }
 
+  function clear() {
+    setSearchResult(null)
+  }
+
   return (
     <div>
       {/* <input type="button" onClick={search} value="Previous"></input>
@@ -37,6 +41,7 @@ function Search (props) {
       <label>Search Thingiverse</label><br/>
       <input type="text" id="searchThingy"></input>
       <input type="button" onClick={search} value="Search"></input>
+      <input type="button" onClick={clear} value="Clear"></input>
       {searchResult && searchResult.map((entry) => <SearchResultEntry entry={entry} key={entry.id} updateList={props.updateList} />)}
     </div>
   )

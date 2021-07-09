@@ -5,6 +5,7 @@ function PrinterList () {
   const [ printerList, setPrinterList ] = useState([])
   const addPrinter = function () {
     const printerAddress = address.value;
+    address.value = ''
     console.log(printerAddress)
     if (printerList.indexOf(printerAddress) === -1) {
       const tempList = printerList.slice();
@@ -16,10 +17,10 @@ function PrinterList () {
   return (
     <div id="printerList">
       <label>Enter Printer Address:</label><br />
-        <input type="text" id="address" value="http://10.0.0.133"></input>
+        <input type="text" id="address"></input>
         <input type="button" onClick={addPrinter} value="Add Printer"></input>
       <h2>Active Printers</h2>
-      {printerList && printerList.map((printer) => <PrinterEntry printer={printer} />)}
+      {printerList && printerList.map((printer) => <PrinterEntry printer={printer} id={printer}/>)}
     </div>
   )
 }
