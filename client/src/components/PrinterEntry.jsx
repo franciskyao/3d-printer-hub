@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
 
 function PrinterEntry (props) {
+  var streamUrl;
+  if (props.printer[props.printer.length -1] === '/') {
+    streamUrl = `${props.printer}webcam/?action=stream`;
+  } else {
+    streamUrl = `${props.printer}/webcam/?action=stream`;
+  }
   return (
     <div>
-      I am printer 1
+      {props.printer}
+      <br />
+      <iframe src={streamUrl} height="480" width="640"></iframe>
     </div>
   )
 }

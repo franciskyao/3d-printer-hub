@@ -20,7 +20,7 @@ function SearchResultEntry(props) {
 
   return (
     <div>
-      <div>
+      <div class="searchCard">
         <p><b>{name}</b></p>
         <img src={preview_image} alt={name}></img>
         <p>Likes: {like_count}</p>

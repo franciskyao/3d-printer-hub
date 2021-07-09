@@ -3,7 +3,7 @@ import ProjectEntry from './ProjectEntry.jsx'
 
 function ProjectList () {
   return (
-    <div>
+    <div id="projectList">
       <ProjectEntry />
     </div>
   )

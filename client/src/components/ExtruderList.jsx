@@ -3,7 +3,7 @@ import ExtruderEntry from './ExtruderEntry.jsx'
 
 function ExtruderList (props) {
   return (
-    <div>
+    <div id="extruderList">
       {props.extruderList.map((extruder) => <ExtruderEntry extruder={extruder} key={extruder.id} />)}
     </div>
   )

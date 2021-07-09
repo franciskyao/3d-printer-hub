@@ -3,7 +3,7 @@ import HotendEntry from './HotendEntry.jsx'
 
 function HotendList () {
   return (
-    <div>
+    <div id="hotendList">
       <HotendEntry />
     </div>
   )

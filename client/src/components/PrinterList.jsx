@@ -3,7 +3,6 @@ import PrinterEntry from './PrinterEntry.jsx'
 
 function PrinterList () {
   const [ printerList, setPrinterList ] = useState([])
-  // <iframe src="http://10.0.0.133/webcam/?action=stream" height="300" width="720"></iframe>
   const addPrinter = function () {
     const printerAddress = address.value;
     console.log(printerAddress)
@@ -14,13 +13,12 @@ function PrinterList () {
     }
   }
 
-  // http://10.0.0.133
   return (
-    <div>
+    <div id="printerList">
       <label>Enter Printer Address:</label><br />
-        <input type="text" id="address"></input>
+        <input type="text" id="address" value="http://10.0.0.133"></input>
         <input type="button" onClick={addPrinter} value="Add Printer"></input>
-      <PrinterEntry />
+      {printerList && printerList.map((printer) => <PrinterEntry printer={printer} />)}
     </div>
   )
 }

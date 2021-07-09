@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Search from './Search.jsx'
-import PrinterList from './PrinterList.jsx'
-import HotendList from './HotendList.jsx'
-import ExtruderList from './ExtruderList.jsx'
-import ProjectList from './ProjectList.jsx'
-import mockData from './mockData.js'
+import Search from './Search.jsx';
+import PrinterList from './PrinterList.jsx';
+import HotendList from './HotendList.jsx';
+import ExtruderList from './ExtruderList.jsx';
+import ProjectList from './ProjectList.jsx';
+import mockData from './mockData.js';
+import '../App.css';
 
 function App() {
   const [dbList, setDbList] = useState(null);
@@ -45,7 +46,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div id="main">
       {/* <iframe src="http://10.0.0.133/webcam/?action=stream" height="300" width="720"></iframe> */}
       <Search setDbList={setDbList} updateList={updateList}/>
       <PrinterList />
