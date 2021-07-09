@@ -11,7 +11,9 @@ function PrinterEntry (props) {
     <div>
       {props.printer}
       <br />
-      <iframe src={streamUrl} height="480" width="640"></iframe>
+      <div className="video_wrapper">
+        <iframe src={streamUrl} height="480" width="640"></iframe>
+      </div>
     </div>
   )
 }

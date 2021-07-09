@@ -21,15 +21,15 @@ const getAll = function(req, res) {
 const addProject = function(req, res) {
   const {name: proj_name, public_url, preview_image, category} = req.body;
   const query = `INSERT INTO projects3d (proj_name, public_url, preview_image, category) VALUES ('${proj_name}', '${public_url}', '${preview_image}', '${category}') ON CONFLICT (proj_name) DO NOTHING`;
-  console.log(query)
   pool.query(query)
     .then((success) => console.log('Successfully added project to table'))
     .catch((err) => console.log('Failed to add project to table'))
   res.end('')
 }
 
-const removeProject = function(req, res) {
-
+const removeProject = function(id, res) {
+  pool.query(`DELETE FROM projects3d WHERE id = ${id}`)
+  res.end('')
 }
 
 module.exports.getAll = getAll;

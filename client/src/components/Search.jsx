@@ -9,7 +9,6 @@ function Search (props) {
   const [page, setPage] = useState(2)
 
   function search(e) {
-    console.log('button check')
     const button = e.target.value;
     if (button === 'Search') {
       setPage(1)
@@ -26,7 +25,6 @@ function Search (props) {
       }
     })
       .then((results) => {
-        console.log(results.data.hits)
         setSearchResult(results.data.hits)
       })
       .catch((err) => console.log(err))
@@ -34,8 +32,9 @@ function Search (props) {
 
   return (
     <div>
-      <input type="button" onClick={search} value="Previous"></input>
-      <input type="button" onClick={search} value="Next"></input>
+      {/* <input type="button" onClick={search} value="Previous"></input>
+      <input type="button" onClick={search} value="Next"></input> */}
+      <label>Search Thingiverse</label><br/>
       <input type="text" id="searchThingy"></input>
       <input type="button" onClick={search} value="Search"></input>
       {searchResult && searchResult.map((entry) => <SearchResultEntry entry={entry} key={entry.id} updateList={props.updateList} />)}

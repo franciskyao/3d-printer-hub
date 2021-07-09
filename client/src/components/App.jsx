@@ -47,10 +47,9 @@ function App() {
 
   return (
     <div id="main">
-      {/* <iframe src="http://10.0.0.133/webcam/?action=stream" height="300" width="720"></iframe> */}
       <Search setDbList={setDbList} updateList={updateList}/>
       <PrinterList />
-      {extruderList && <ExtruderList extruderList={extruderList}/>}
+      {extruderList && <ExtruderList extruderList={extruderList} updateList={updateList}/>}
       {hotendList &&<HotendList hotendList={hotendList}/>}
       {projectList && <ProjectList projectList={projectList}/>}
     </div>
