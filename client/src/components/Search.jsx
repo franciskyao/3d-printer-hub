@@ -3,13 +3,10 @@ import axios from 'axios';
 import SearchResultEntry from './SearchResultEntry.jsx'
 import mockData from './mockData.js'
 
-// require('dotenv').config();
-
 function Search (props) {
-  const [searchResult, setSearchResult] = useState(mockData);
+  const [searchResult, setSearchResult] = useState(null);
   const [searchQeury, setSearchQuery] = useState(null)
   const [page, setPage] = useState(2)
-  //need setDbList
 
   function search(e) {
     console.log('button check')
