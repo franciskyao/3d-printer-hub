@@ -6,7 +6,7 @@ import HotendList from './HotendList.jsx';
 import ExtruderList from './ExtruderList.jsx';
 import ProjectList from './ProjectList.jsx';
 import mockData from './mockData.js';
-import '../style.scss';
+import '../style.css';
 
 function App() {
   const [dbList, setDbList] = useState(null);
