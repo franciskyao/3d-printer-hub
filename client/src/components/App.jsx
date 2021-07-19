@@ -20,7 +20,6 @@ function App() {
   }, [])
 
   function updateList() {
-    console.log('List got updated')
     axios.get('/getmodels')
       .then((models) => {
         const dataInDb = models.data.rows;

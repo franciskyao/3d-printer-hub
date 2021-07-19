@@ -1,9 +1,19 @@
-$body-color: red;
+$body-color: #212121;
 
-body {
+.main {
   color: $body-color;
+  width: 80%;
+  margin: 0 auto;
 }
 
 h2 {
-  color: red;
+  // color: #6e0000
+}
+.main {
+  color: #212121;
+  border: 1px solid black;
+}
+
+#searchCard {
+  border: 1px solid black;
 }

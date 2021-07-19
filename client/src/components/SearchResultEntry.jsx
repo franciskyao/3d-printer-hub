@@ -19,15 +19,15 @@ function SearchResultEntry(props) {
   }
 
   return (
-    <div>
-      <div class="searchCard">
+    <div class="searchCard">
+      <div>
         <p><b>{name}</b></p>
         <img src={preview_image} alt={name}></img>
         <p>Likes: {like_count}</p>
         <p>Comments: {comment_count}</p>
       </div>
       <div>
-        <select id="projectCategory" onChange={(e) => setCategory(e.target.value)}>
+        <select onChange={(e) => setCategory(e.target.value)}>
           <option></option>
           <option value="extruder">extruder</option>
           <option value="hotend">hotend</option>
