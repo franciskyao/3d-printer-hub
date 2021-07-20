@@ -46,6 +46,7 @@ function App() {
 
   return (
     <>
+      {/* top naviation to cycle through list.  */}
       <Grid>
       {/* Nav bar on top cycles through the list */}
       </Grid>
