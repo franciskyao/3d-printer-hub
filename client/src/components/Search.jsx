@@ -4,7 +4,7 @@ import SearchResultEntry from './SearchResultEntry.jsx'
 import mockData from './mockData.js'
 
 function Search (props) {
-  const [searchResult, setSearchResult] = useState(null);
+  const [searchResult, setSearchResult] = useState(mockData);
   const [searchQeury, setSearchQuery] = useState(null)
   const [page, setPage] = useState(2)
 

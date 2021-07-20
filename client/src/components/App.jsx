@@ -7,6 +7,7 @@ import ExtruderList from './ExtruderList.jsx';
 import ProjectList from './ProjectList.jsx';
 import mockData from './mockData.js';
 import '../style.css';
+import Grid from '@material-ui/core/Grid';
 
 function App() {
   const [dbList, setDbList] = useState(null);
@@ -44,13 +45,18 @@ function App() {
   }
 
   return (
-    <div id="main">
-      <Search setDbList={setDbList} updateList={updateList}/>
-      <PrinterList />
-      {extruderList && <ExtruderList extruderList={extruderList} updateList={updateList}/>}
-      {hotendList &&<HotendList hotendList={hotendList} updateList={updateList}/>}
-      {projectList && <ProjectList projectList={projectList} updateList={updateList}/>}
-    </div>
+    <>
+      <Grid>
+      {/* Nav bar on top cycles through the list */}
+      </Grid>
+      <div id="main">
+        <Search setDbList={setDbList} updateList={updateList}/>
+        <PrinterList />
+        {extruderList && <ExtruderList extruderList={extruderList} updateList={updateList}/>}
+        {hotendList &&<HotendList hotendList={hotendList} updateList={updateList}/>}
+        {projectList && <ProjectList projectList={projectList} updateList={updateList}/>}
+      </div>
+    </>
   )
 }
 

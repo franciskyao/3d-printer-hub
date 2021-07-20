@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './client/src/index.jsx',
+  entry: path.resolve(__dirname, './client/src/index.jsx'),
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './client/dist'),
@@ -25,8 +25,8 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
-      }
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
 };
