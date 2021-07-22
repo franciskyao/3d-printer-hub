@@ -39,8 +39,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PermanentDrawerLeft() {
+export default function Menu(props) {
   const classes = useStyles();
+  const { changeMainDisplay } = props;
 
   return (
     <div className={classes.root}>
@@ -65,7 +66,7 @@ export default function PermanentDrawerLeft() {
         <List>
           <ListItem>
             <ListItem button>
-              3D Printer
+              Active 3D Printers
             </ListItem>
           </ListItem>
         </List>
@@ -80,8 +81,22 @@ export default function PermanentDrawerLeft() {
         <Divider />
         <List>
           <ListItem>
-            <ListItem button>
-              List
+            <ListItem button onClick={() => changeMainDisplay('hotend')}>
+              Hotend
+            </ListItem>
+          </ListItem>
+        </List>
+        <List>
+          <ListItem>
+            <ListItem button onClick={() => changeMainDisplay('extruder')}>
+              Extruder
+            </ListItem>
+          </ListItem>
+        </List>
+        <List>
+          <ListItem>
+            <ListItem button onClick={() => changeMainDisplay('project')}>
+              Project
             </ListItem>
           </ListItem>
         </List>
