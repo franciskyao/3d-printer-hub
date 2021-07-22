@@ -45,6 +45,12 @@ function App() {
     updateList()
   }, [])
 
+  function changeMainDisplay(categoryToDisplay) {
+    console.log('hello click?')
+    console.log(categoryToDisplay)
+    setMainDisplay(categoryToDisplay)
+  }
+
   function updateList() {
     axios.get('/getmodels')
       .then((models) => {
@@ -73,7 +79,7 @@ function App() {
     <>
       <Grid container lg={12} spacing={10}>
         <Grid container lg={12}>
-          <Menu />
+          <Menu changeMainDisplay={changeMainDisplay}/>
         </Grid>
         <Grid item id="monitor"  lg={2}>
           <PrinterList />
@@ -83,9 +89,10 @@ function App() {
         </Grid>
         <Grid item id="list" lg={3}>
           This should be actively monitored 3d ptiners
-          {extruderList && <ExtruderList extruderList={extruderList} updateList={updateList}/>}
-          {hotendList &&<HotendList hotendList={hotendList} updateList={updateList}/>}
-          {projectList && <ProjectList projectList={projectList} updateList={updateList}/>}
+          {mainDisplay === 'extruder' && extruderList? (<ExtruderList extruderList={extruderList} updateList={updateList}/>)
+          : mainDisplay === 'hotend' && hotendList? (<HotendList hotendList={hotendList} updateList={updateList}/>)
+          : mainDisplay === 'project' && projectList? (<ProjectList projectList={projectList} updateList={updateList}/>)
+          : null}
         </Grid>
       </Grid>
       <div id="main">
