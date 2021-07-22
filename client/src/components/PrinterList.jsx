@@ -16,6 +16,8 @@ function PrinterList () {
 
   return (
     <div id="printerList">
+    <br />
+    <br />
       <label>Enter Printer Address:</label><br />
         <input type="text" id="address"></input>
         <input type="button" onClick={addPrinter} value="Add Printer"></input>

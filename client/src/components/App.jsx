@@ -5,6 +5,7 @@ import PrinterList from './PrinterList.jsx';
 import HotendList from './HotendList.jsx';
 import ExtruderList from './ExtruderList.jsx';
 import ProjectList from './ProjectList.jsx';
+import Menu from './Menu.jsx';
 import mockData from './mockData.js';
 import '../style.css';
 import Grid from '@material-ui/core/Grid';
@@ -19,6 +20,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
+    margin: 0
   },
   drawer: {
     width: drawerWidth
@@ -69,25 +71,18 @@ function App() {
 
   return (
     <>
-      {/* top naviation to cycle through list.  */}
-      <AppBar position="fixed" className={classes.appBar}>
-        {/* 3D Printer Hub */}
-        {/* <Search setDbList={setDbList} updateList={updateList}/> */}
-        {/* <Typography className={classes.title} variant="h6" noWrap>
-          Material-UI
-        </Typography> */}
-        <OutlinedInput className={classes.searchInput}/>
-      </AppBar>
-      {/* <Drawer className={classes.drawer}>
-      </Drawer> */}
-      <Grid container lg={12}>
-        <Grid id="monitor"  lg={2}>
+      <Grid container lg={12} spacing={10}>
+        <Grid container lg={12}>
+          <Menu />
+        </Grid>
+        <Grid item id="monitor"  lg={2}>
           <PrinterList />
         </Grid>
-        <Grid id="mainDisplay" lg={7}>
-          This is going to be main display
+        <Grid item id="mainDisplay" lg={7}>
+          This is main display
         </Grid>
-        <Grid id="list" lg={3}>
+        <Grid item id="list" lg={3}>
+          This should be actively monitored 3d ptiners
           {extruderList && <ExtruderList extruderList={extruderList} updateList={updateList}/>}
           {hotendList &&<HotendList hotendList={hotendList} updateList={updateList}/>}
           {projectList && <ProjectList projectList={projectList} updateList={updateList}/>}
