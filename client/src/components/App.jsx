@@ -5,6 +5,7 @@ import PrinterList from './PrinterList.jsx';
 import HotendList from './HotendList.jsx';
 import ExtruderList from './ExtruderList.jsx';
 import ProjectList from './ProjectList.jsx';
+import ESteps from './ESteps.jsx';
 import Menu from './Menu.jsx';
 import mockData from './mockData.js';
 import '../style.css';
@@ -46,7 +47,6 @@ function App() {
   }, [])
 
   function changeMainDisplay(categoryToDisplay) {
-    console.log('hello click?')
     console.log(categoryToDisplay)
     setMainDisplay(categoryToDisplay)
   }
@@ -88,10 +88,11 @@ function App() {
           This is main display
         </Grid>
         <Grid item id="list" lg={3}>
-          This should be actively monitored 3d ptiners
-          {mainDisplay === 'extruder' && extruderList? (<ExtruderList extruderList={extruderList} updateList={updateList}/>)
-          : mainDisplay === 'hotend' && hotendList? (<HotendList hotendList={hotendList} updateList={updateList}/>)
-          : mainDisplay === 'project' && projectList? (<ProjectList projectList={projectList} updateList={updateList}/>)
+          <PrinterList />
+          {mainDisplay === 'extruder' && extruderList ? (<ExtruderList extruderList={extruderList} updateList={updateList}/>)
+          : mainDisplay === 'hotend' && hotendList ? (<HotendList hotendList={hotendList} updateList={updateList}/>)
+          : mainDisplay === 'project' && projectList ? (<ProjectList projectList={projectList} updateList={updateList}/>)
+          : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
           : null}
         </Grid>
       </Grid>

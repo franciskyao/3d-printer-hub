@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Menu(props) {
+const Menu = function (props) {
   const classes = useStyles();
   const { changeMainDisplay } = props;
 
@@ -73,7 +73,7 @@ export default function Menu(props) {
         <Divider />
         <List>
           <ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => changeMainDisplay('esteps')}>
               E-Step Calculator
             </ListItem>
           </ListItem>
@@ -105,3 +105,5 @@ export default function Menu(props) {
     </div>
   );
 }
+
+export default Menu;

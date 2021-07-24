@@ -40,8 +40,6 @@ function SearchResultEntry(props) {
   const { name: author, thumbnail: creatorThumbnail } = creator;
   const classes = cardStyles();
 
-  console.log(props.entry)
-
   function addToDb() {
     console.log('Add data to db');
     axios.post('/addproject', {

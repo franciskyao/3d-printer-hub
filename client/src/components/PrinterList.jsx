@@ -6,7 +6,7 @@ function PrinterList () {
   const addPrinter = function () {
     const printerAddress = address.value;
     address.value = ''
-    console.log(printerAddress)
+    console.log(`Printer ${printerAddress} added`)
     if (printerList.indexOf(printerAddress) === -1) {
       const tempList = printerList.slice();
       tempList.push(printerAddress);
