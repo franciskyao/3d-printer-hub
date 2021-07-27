@@ -65,7 +65,7 @@ const Menu = function (props) {
         <Divider />
         <List>
           <ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => changeMainDisplay('activePrinters')}>
               Active 3D Printers
             </ListItem>
           </ListItem>
