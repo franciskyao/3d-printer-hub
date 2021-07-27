@@ -47,7 +47,6 @@ function App() {
   }, [])
 
   function changeMainDisplay(categoryToDisplay) {
-    console.log(categoryToDisplay)
     setMainDisplay(categoryToDisplay)
   }
 
@@ -77,8 +76,8 @@ function App() {
 
   return (
     <>
-      <Grid container lg={12} spacing={10}>
-        <Grid container lg={12}>
+      <Grid container spacing={10}>
+        <Grid container>
           <Menu changeMainDisplay={changeMainDisplay}/>
         </Grid>
         <Grid item id="monitor"  lg={2}>
@@ -88,13 +87,13 @@ function App() {
           This is main display
         </Grid>
         <Grid item id="list" lg={3}>
-          <PrinterList />
           {mainDisplay === 'extruder' && extruderList ? (<ExtruderList extruderList={extruderList} updateList={updateList}/>)
           : mainDisplay === 'hotend' && hotendList ? (<HotendList hotendList={hotendList} updateList={updateList}/>)
           : mainDisplay === 'project' && projectList ? (<ProjectList projectList={projectList} updateList={updateList}/>)
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
+          : mainDisplay === 'activePrinters' ? <PrinterList updateList={updateList}/>
           : null}
-        </Grid>
+        </Grid>activePrinters
       </Grid>
       <div id="main">
       </div>
