@@ -100,6 +100,14 @@ const Menu = function (props) {
             </ListItem>
           </ListItem>
         </List>
+        <Divider />
+        <List>
+          <ListItem>
+            <ListItem button onClick={() => changeMainDisplay('blTouch')}>
+              Configuring BL-Touch
+            </ListItem>
+          </ListItem>
+        </List>
       </Drawer>
       <br /><br /><br />
     </div>
