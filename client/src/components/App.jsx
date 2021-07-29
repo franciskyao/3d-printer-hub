@@ -7,6 +7,7 @@ import ExtruderList from './ExtruderList.jsx';
 import ProjectList from './ProjectList.jsx';
 import ESteps from './ESteps.jsx';
 import Menu from './Menu.jsx';
+import BLTouch from './BLTouch.jsx';
 import mockData from './mockData.js';
 import '../style.css';
 import Grid from '@material-ui/core/Grid';
@@ -92,6 +93,7 @@ function App() {
           : mainDisplay === 'project' && projectList ? (<ProjectList projectList={projectList} updateList={updateList}/>)
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
           : mainDisplay === 'activePrinters' ? <PrinterList updateList={updateList}/>
+          : mainDisplay === 'blTouch' ? <BLTouch updateList={updateList}/>
           : null}
         </Grid>activePrinters
       </Grid>
