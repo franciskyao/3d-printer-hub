@@ -39,6 +39,7 @@ function App() {
   const [extruderList, setExtruderList] = useState(null);
   const [projectList, setProjectList] = useState(null);
   const [mainDisplay, setMainDisplay] = useState(null);
+  const [listDisplay, setListDisplay] = useState(null)
   const classes = useStyles();
 
   useEffect(() => {
@@ -79,19 +80,20 @@ function App() {
         <Grid container>
           <Menu changeMainDisplay={changeMainDisplay}/>
         </Grid>
-        <Grid item id="monitor"  lg={2}>
+        {/* <Grid item id="monitor"  lg={2}>
           <PrinterList />
-        </Grid>
+        </Grid> */}
         <Grid item id="mainDisplay" lg={7}>
+          {mainDisplay === 'blTouch'? <BLTouch updateList={updateList}/>
+          : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
+          :null}
           This is main display
         </Grid>
         <Grid item id="list" lg={3}>
           {mainDisplay === 'extruder' && extruderList ? (<ExtruderList extruderList={extruderList} updateList={updateList}/>)
           : mainDisplay === 'hotend' && hotendList ? (<HotendList hotendList={hotendList} updateList={updateList}/>)
           : mainDisplay === 'project' && projectList ? (<ProjectList projectList={projectList} updateList={updateList}/>)
-          : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
-          : mainDisplay === 'activePrinters' ? <PrinterList updateList={updateList}/>
-          : mainDisplay === 'blTouch' ? <BLTouch updateList={updateList}/>
+          // : mainDisplay === 'activePrinters' ? <PrinterList updateList={updateList}/>
           : null}
         </Grid>activePrinters
       </Grid>
