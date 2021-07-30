@@ -109,6 +109,8 @@ const Menu = function (props) {
           </ListItem>
         </List>
       </Drawer>
+      {/* THIS ADJUSTS THE SPACING FROM TOP BAR TO CONTENT */}
+      <br /><br /><br />
       <br /><br /><br />
     </div>
   );
