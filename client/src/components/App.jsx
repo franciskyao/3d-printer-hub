@@ -10,26 +10,24 @@ import Menu from './Menu.jsx';
 import BLTouch from './BLTouch.jsx';
 import mockData from './mockData.js';
 import '../style.css';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     margin: 0
   },
   drawer: {
-    width: drawerWidth
+    width: 250
   },
   searchInput: {
     height: 40,
-    width: drawerWidth,
+    width: 250,
     backgroundColor: "white",
   }
 }));
