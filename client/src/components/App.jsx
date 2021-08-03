@@ -52,11 +52,11 @@ function App() {
   }
 
   const addPrinter = function (ip) {
-    console.log(`Printer ${ip} added`)
     if (printerList.indexOf(ip) === -1) {
       const tempList = printerList.slice();
       tempList.push(ip);
       setPrinterList(tempList);
+      console.log(`Printer ${ip} added`)
     }
   }
 
