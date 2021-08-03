@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Search from './Search.jsx';
+import PrinterAdd from './PrinterAdd.jsx';
 import PrinterList from './PrinterList.jsx';
 import HotendList from './HotendList.jsx';
 import ExtruderList from './ExtruderList.jsx';
@@ -80,22 +81,23 @@ function App() {
         <Grid container>
           <Menu changeMainDisplay={changeMainDisplay}/>
         </Grid>
-        {/* <Grid item id="monitor"  lg={2}>
-          <PrinterList />
-        </Grid> */}
+        <Grid item id="monitor"  lg={2}>
+          {/* <PrinterList /> */}
+        </Grid>
         <Grid item id="mainDisplay" lg={7}>
           {mainDisplay === 'blTouch'? <BLTouch updateList={updateList}/>
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
+          : mainDisplay === 'activePrinters' ? <PrinterList printerList={printerList} updateList={updateList}/>
           :null}
-          This is main display
+          {/* This is main display */}
         </Grid>
         <Grid item id="list" lg={3}>
           {mainDisplay === 'extruder' && extruderList ? (<ExtruderList extruderList={extruderList} updateList={updateList}/>)
           : mainDisplay === 'hotend' && hotendList ? (<HotendList hotendList={hotendList} updateList={updateList}/>)
           : mainDisplay === 'project' && projectList ? (<ProjectList projectList={projectList} updateList={updateList}/>)
-          // : mainDisplay === 'activePrinters' ? <PrinterList updateList={updateList}/>
+          : mainDisplay === 'activePrinters' ? (<PrinterAdd printerList={printerList}/>)
           : null}
-        </Grid>activePrinters
+        </Grid>
       </Grid>
       <div id="main">
       </div>
