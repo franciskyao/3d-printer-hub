@@ -14,42 +14,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PrinterList () {
-  const [ printerList, setPrinterList ] = useState([])
-  const [ printerIp, setPrinterIp] = useState(null)
+function PrinterList (props) {
+  const [ printerList, setPrinterList ] = useState(props.printerList)
   const classes = useStyles();
-
-  const addPrinter = function () {
-    console.log(`Printer ${printerIp} added`)
-    if (printerList.indexOf(printerIp) === -1) {
-      const tempList = printerList.slice();
-      tempList.push(printerIp);
-      setPrinterList(tempList);
-    }
-  }
+  console.log('this is printer list', printerList)
 
   return (
     <Grid container spacing={2} id="printerList">
-      {/* <TextField
-        className={classes.textField}
-        required
-        label="3D printer address"
-        id="targetLength"
-        margin="dense"
-        placeholder="http://10.0.0.133/"
-        variant="outlined"
-        onChange={(e) => setPrinterIp(e.target.value)}
-      />
-      <br />
-      <Button
-        className={classes.addButton}
-        onClick={addPrinter}
-        variant="contained"
-        color="primary">
-          Add Printer
-      </Button>
-      <br />
-      <h2>Active Printers</h2> */}
       {printerList && printerList.map((printer) =>
         <Grid item lg={4}>
           <PrinterEntry printer={printer} key={printer}/>
