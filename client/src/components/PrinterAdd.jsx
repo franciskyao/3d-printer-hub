@@ -12,17 +12,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PrinterAdd = function () {
+const PrinterAdd = function (props) {
+  const [ printerIp, setPrinterIp] = useState(null)
+  const { addPrinter } = props
   const classes = useStyles();
-
-  const addPrinter = function () {
-    console.log(`Printer ${printerIp} added`)
-    if (printerList.indexOf(printerIp) === -1) {
-      const tempList = printerList.slice();
-      tempList.push(printerIp);
-      setPrinterList(tempList);
-    }
-  }
 
   return (
     <>
@@ -39,7 +32,7 @@ const PrinterAdd = function () {
       <br />
       <Button
         className={classes.addButton}
-        onClick={addPrinter}
+        onClick={() => addPrinter(printerIp)}
         variant="contained"
         color="primary">
           Add Printer
