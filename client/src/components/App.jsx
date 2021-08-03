@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const [dbList, setDbList] = useState(null);
-  const [printerList, setPrinterList] = useState(null);
+  const [printerList, setPrinterList] = useState([]);
   const [hotendList, setHotendList] = useState(null);
   const [extruderList, setExtruderList] = useState(null);
   const [projectList, setProjectList] = useState(null);
@@ -49,6 +49,15 @@ function App() {
 
   function changeMainDisplay(categoryToDisplay) {
     setMainDisplay(categoryToDisplay)
+  }
+
+  const addPrinter = function (ip) {
+    console.log(`Printer ${ip} added`)
+    if (printerList.indexOf(ip) === -1) {
+      const tempList = printerList.slice();
+      tempList.push(ip);
+      setPrinterList(tempList);
+    }
   }
 
   function updateList() {
@@ -95,7 +104,7 @@ function App() {
           {mainDisplay === 'extruder' && extruderList ? (<ExtruderList extruderList={extruderList} updateList={updateList}/>)
           : mainDisplay === 'hotend' && hotendList ? (<HotendList hotendList={hotendList} updateList={updateList}/>)
           : mainDisplay === 'project' && projectList ? (<ProjectList projectList={projectList} updateList={updateList}/>)
-          : mainDisplay === 'activePrinters' ? (<PrinterAdd printerList={printerList}/>)
+          : mainDisplay === 'activePrinters' ? (<PrinterAdd printerList={printerList} addPrinter={addPrinter}/>)
           : null}
         </Grid>
       </Grid>
