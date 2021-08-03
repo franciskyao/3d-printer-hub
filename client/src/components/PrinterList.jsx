@@ -15,13 +15,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PrinterList (props) {
-  const [ printerList, setPrinterList ] = useState(props.printerList)
-  const classes = useStyles();
-  console.log('this is printer list', printerList)
 
   return (
     <Grid container spacing={2} id="printerList">
-      {printerList && printerList.map((printer) =>
+      {props.printerList && props.printerList.map((printer) =>
         <Grid item lg={4}>
           <PrinterEntry printer={printer} key={printer}/>
         </Grid>
