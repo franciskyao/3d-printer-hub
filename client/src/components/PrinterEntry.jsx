@@ -32,6 +32,11 @@ const cardStyles = makeStyles((theme) => ({
   title: {
     color: 'red'
   },
+  media: {
+    justifyContent: 'center',
+    margin: 'auto',
+    alignItems: 'center',
+  },
   cardActionsIcons: {
     justifyContent: 'center'
   }
@@ -45,18 +50,24 @@ function PrinterEntry (props) {
   } else {
     streamUrl = `${props.printer}/webcam/?action=stream`;
   }
+  console.log(streamUrl)
   return (
     <div>
       <Card>
         <CardHeader
           title={<b>{props.printer}</b>}
         />
+        <CardMedia
+          className={classes.media}
+          component='iframe'
+          src={streamUrl}
+        />
       </Card>
-      {props.printer}
+      {/* {props.printer}
       <br />
       <div className="video_wrapper">
         <iframe src={streamUrl} height="480" width="640"></iframe>
-      </div>
+      </div> */}
     </div>
   )
 }
