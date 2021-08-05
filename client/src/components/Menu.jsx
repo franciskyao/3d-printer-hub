@@ -21,11 +21,14 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
+    height: '3vw',
     marginLeft: drawerWidth,
+    display: 'block',
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    display: 'block',
   },
   drawerPaper: {
     width: drawerWidth,
@@ -53,6 +56,7 @@ const Menu = function (props) {
           </Typography>
         </Toolbar>
       </AppBar>
+      <div className={classes.appBar} />
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -109,9 +113,6 @@ const Menu = function (props) {
           </ListItem>
         </List>
       </Drawer>
-      {/* THIS ADJUSTS THE SPACING FROM TOP BAR TO CONTENT */}
-      <br /><br /><br />
-      <br /><br /><br />
     </div>
   );
 }
