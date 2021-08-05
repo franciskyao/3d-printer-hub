@@ -98,7 +98,6 @@ function App() {
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
           : mainDisplay === 'activePrinters' ? <PrinterList printerList={printerList} updateList={updateList}/>
           :null}
-          {/* This is main display */}
         </Grid>
         <Grid item id="list" lg={3}>
           {mainDisplay === 'extruder' && extruderList ? (<ExtruderList extruderList={extruderList} updateList={updateList}/>)
