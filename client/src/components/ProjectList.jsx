@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import ProjectEntry from './ProjectEntry.jsx'
+import List from '@material-ui/core/List';
 
 function ProjectList (props) {
   return (
-    <div id="projectList">
-    <br />
-      <h2>Project List</h2>
+    <List id="projectList">
+      <h1>Project List</h1>
       {props.projectList.map((project) => <ProjectEntry project={project} key={project.id} updateList={props.updateList} />)}
-    </div>
+    </List>
   )
 }
 
