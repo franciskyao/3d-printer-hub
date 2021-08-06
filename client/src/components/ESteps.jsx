@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 
 function ESteps (props) {
   const [finalEsteps, setFinalEsteps] = useState(null);
-  // const [currentEsteps, setCurrentEsteps] = useState(null);
   const classes = useStyles();
 
   const handleCalculateButton = function() {
@@ -23,12 +22,10 @@ function ESteps (props) {
     const measured = parseInt(measuredLength.value);
     const newEsteps = current * (measured/target)
     setFinalEsteps(newEsteps)
-    // setCurrentEsteps(newEsteps)
   };
 
   return (
     <>
-      {/* {currentEsteps && <p>Your current esteps is {currentEsteps}</p>} */}
       <TextField
         required
         label="Current E-steps"
