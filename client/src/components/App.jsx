@@ -6,6 +6,7 @@ import PrinterList from './PrinterList.jsx';
 import HotendList from './HotendList.jsx';
 import ExtruderList from './ExtruderList.jsx';
 import ProjectList from './ProjectList.jsx';
+import ProjectListMain from './ProjectListMain.jsx';
 import ESteps from './ESteps.jsx';
 import Menu from './Menu.jsx';
 import BLTouch from './BLTouch.jsx';
@@ -97,6 +98,7 @@ function App() {
           {mainDisplay === 'blTouch'? <BLTouch updateList={updateList}/>
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
           : mainDisplay === 'activePrinters' ? <PrinterList printerList={printerList} updateList={updateList}/>
+          : mainDisplay === 'project' ? <ProjectListMain projectList={projectList}/>
           :null}
         </Grid>
         <Grid item id="list" lg={3}>
