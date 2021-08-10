@@ -8,11 +8,13 @@ import CardActions from '@material-ui/core/CardActions';
 
 const ProjectListMainCard = function(props) {
   const { project } = props;
-  const { proj_name: projName } = project
+  const { proj_name: projName, preview_image: previewImage } = project
   console.log(project)
   return (
     <Card>
-      {projName}
+    <CardHeader
+      title={projName}
+    />
     </Card>
   )
 }
