@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -18,19 +18,12 @@ const useStyles = makeStyles((theme) => ({
 
 const ProjectListMainCard = function(props) {
   const [ shouldExpandPartsTable, setShouldExpandPartsTable ] = useState(false);
-  const [ partsList, setPartsList ] = useState(mockPart);
   const { project } = props;
   const { proj_name: projName, preview_image: previewImage } = project;
   const classes = useStyles();
 
   console.log(project)
   console.log(classes)
-
-  const getPartsList = function() {
-    //if partsList is empty
-      //send get request
-    //else just collapse and add
-  }
 
   return (
     <Card>
