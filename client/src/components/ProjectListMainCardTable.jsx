@@ -1,5 +1,6 @@
 import mockPart from './mockPart.js';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ProjectListMainCardTableRow from './ProjectListMainCardTableRow.jsx';
 
 const ProjectListMainCardTable = function(props) {
   // id: 2,
@@ -8,13 +9,26 @@ const ProjectListMainCardTable = function(props) {
   // part_available: 6,
   // part_needed: 3,
   // part_complete: false
+  const [ partsList, setPartsList ] = useState(null);
+
+  const updatePartsList = function() {
+    //get request to postgres
+    setPartsList(mockPart);
+  }
+
+  useEffect(()=> (
+    updatePartsList()
+  ),[])
 
   const addPart = function () {
-
   }
 
   return (
     <>
+      {partsList.length > 0 && partsList.map((part) => (<ProjectListMainCardTableRow
+        part={part}
+        updatePartsList={updatePartsList}
+        />))}
     </>
   )
 }
