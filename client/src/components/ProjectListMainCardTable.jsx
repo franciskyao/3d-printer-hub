@@ -4,6 +4,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import IconButton from '@material-ui/core/IconButton';
+import SaveIcon from '@material-ui/icons/Save';
 import ProjectListMainCardTableRow from './ProjectListMainCardTableRow.jsx';
 
 import mockPart from './mockPart.js';
@@ -27,6 +29,7 @@ const ProjectListMainCardTable = function(props) {
   }
 
   const handleSaveButton = function() {
+    //need id
     //put request to postgres
   }
 
@@ -48,6 +51,7 @@ const ProjectListMainCardTable = function(props) {
             <TableCell>Completed</TableCell>
             <TableCell></TableCell>
           </TableRow>
+import IconButton from '@material-ui/core/IconButton';
         </TableHead>
         <TableBody>
           {partsList && partsList.map((part) =>(<ProjectListMainCardTableRow
@@ -59,7 +63,11 @@ const ProjectListMainCardTable = function(props) {
             <TableCell>Input Number</TableCell>
             <TableCell>Input Needed</TableCell>
             <TableCell>Input Completed</TableCell>
-            <TableCell>Save Button</TableCell>
+            <TableCell>
+              <IconButton onClick={handleSaveButton}>
+                <SaveIcon />
+              </IconButton>
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>
