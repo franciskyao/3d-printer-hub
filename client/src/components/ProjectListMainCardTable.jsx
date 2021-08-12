@@ -50,6 +50,10 @@ const ProjectListMainCardTable = function(props) {
           </TableRow>
         </TableHead>
         <TableBody>
+          {partsList && partsList.map((part) =>(<ProjectListMainCardTableRow
+          part={part}
+          updatePartsList={updatePartsList}
+          />))}
           <TableRow>
             <TableCell>Input Part Name</TableCell>
             <TableCell>Input Number</TableCell>
@@ -58,13 +62,7 @@ const ProjectListMainCardTable = function(props) {
             <TableCell>Save Button</TableCell>
           </TableRow>
         </TableBody>
-
       </Table>
-      Should show
-      {partsList.length > 0 && partsList.map((part) => (<ProjectListMainCardTableRow
-        part={part}
-        updatePartsList={updatePartsList}
-        />))}
     </>
   )
 }
