@@ -4,6 +4,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import SaveIcon from '@material-ui/icons/Save';
 import ProjectListMainCardTableRow from './ProjectListMainCardTableRow.jsx';
@@ -51,7 +52,6 @@ const ProjectListMainCardTable = function(props) {
             <TableCell>Completed</TableCell>
             <TableCell></TableCell>
           </TableRow>
-import IconButton from '@material-ui/core/IconButton';
         </TableHead>
         <TableBody>
           {partsList && partsList.map((part) =>(<ProjectListMainCardTableRow
@@ -59,10 +59,49 @@ import IconButton from '@material-ui/core/IconButton';
           updatePartsList={updatePartsList}
           />))}
           <TableRow>
-            <TableCell>Input Part Name</TableCell>
-            <TableCell>Input Number</TableCell>
-            <TableCell>Input Needed</TableCell>
-            <TableCell>Input Completed</TableCell>
+            <TableCell>
+              <TextField
+                id="outlined-margin-dense"
+                placeholder="Enter Part Name"
+                margin="dense"
+                variant="outlined"
+                onChange={(e)=> {
+                  setNewPartName(e.target.value)
+                }}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                type="number"
+                id="outlined-margin-dense"
+                placeholder="Enter Amount Available"
+                margin="dense"
+                variant="outlined"
+                onChange={(e)=> {
+                  setNewPartAvailable(e.target.value)
+                }}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                type="number"
+                id="outlined-margin-dense"
+                placeholder="Enter Amount Needed"
+                margin="dense"
+                variant="outlined"
+                onChange={(e)=> {
+                  setNewPartNeeded(e.target.value)
+                }}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                id="outlined-margin-dense"
+                placeholder="Enter Part Name"
+                margin="dense"
+                variant="outlined"
+              />
+            </TableCell>
             <TableCell>
               <IconButton onClick={handleSaveButton}>
                 <SaveIcon />
