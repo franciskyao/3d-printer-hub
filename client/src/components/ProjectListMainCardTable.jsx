@@ -1,8 +1,14 @@
-import mockPart from './mockPart.js';
 import React, { useState, useEffect } from 'react';
+import Table from '@material-ui/core/Table';
 import ProjectListMainCardTableRow from './ProjectListMainCardTableRow.jsx';
 
+import mockPart from './mockPart.js';
+
 const ProjectListMainCardTable = function(props) {
+  const [ newPartName, setNewPartName ] = useState(null);
+  const [ newPartAvailable, setNewPartAvailable] = useState(null);
+  const [ newPartNeeded, setNewPartNeeded ] = useState(null);
+  const [ newPartComplete, setNewPartComplete ] = useState(null);
   // id: 2,
   // project_id: 3,
   // part_name: "m3 screws",
@@ -16,6 +22,10 @@ const ProjectListMainCardTable = function(props) {
     setPartsList(mockPart);
   }
 
+  const handleSaveButton = function() {
+    //put request to postgres
+  }
+
   useEffect(()=> (
     updatePartsList()
   ),[])
@@ -25,6 +35,9 @@ const ProjectListMainCardTable = function(props) {
 
   return (
     <>
+      <Table>
+      </Table>
+      Should show
       {partsList.length > 0 && partsList.map((part) => (<ProjectListMainCardTableRow
         part={part}
         updatePartsList={updatePartsList}
