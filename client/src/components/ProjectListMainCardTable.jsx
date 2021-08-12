@@ -9,7 +9,7 @@ const ProjectListMainCardTable = function(props) {
   // part_available: 6,
   // part_needed: 3,
   // part_complete: false
-  const [ partsList, setPartsList ] = useState(null);
+  const [ partsList, setPartsList ] = useState(mockPart);
 
   const updatePartsList = function() {
     //get request to postgres
