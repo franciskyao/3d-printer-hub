@@ -32,8 +32,8 @@ const ProjectListMainCardTable = function(props) {
         id: projectId,
       }
     })
-    //get request to postgres
-    // setPartsList(mockPart);
+    .then((results) => setPartsList(results.data.rows))
+    .catch((err) => console.log(`failed to get parts of id: ${projectId}`))
   }
 
   const handleSaveButton = function() {
@@ -61,7 +61,7 @@ const ProjectListMainCardTable = function(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {partsList && partsList.map((part) =>(<ProjectListMainCardTableRow
+          {Array.isArray(partsList) === true && partsList.map((part) =>(<ProjectListMainCardTableRow
           part={part}
           key={part.id}
           updatePartsList={updatePartsList}
