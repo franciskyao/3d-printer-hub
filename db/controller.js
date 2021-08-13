@@ -32,6 +32,13 @@ const removeProject = function(id, res) {
   res.end('')
 }
 
+const getProjectParts = function(id, res) {
+  pool.query(`SELECT * FROM projectParts WHERE project_id = ${id}`)
+    .then((success) => res.send(success))
+    .catch((err) => console.log(`Failed to get parts of project ${id}`))
+}
+
 module.exports.getAll = getAll;
 module.exports.addProject = addProject;
 module.exports.removeProject = removeProject;
+module.exports.getProjectParts = getProjectParts;
