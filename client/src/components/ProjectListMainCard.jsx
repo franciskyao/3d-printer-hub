@@ -19,12 +19,10 @@ const useStyles = makeStyles((theme) => ({
 
 const ProjectListMainCard = function(props) {
   const [ shouldExpandPartsTable, setShouldExpandPartsTable ] = useState(false);
-  const { project } = props;
-  const { proj_name: projName, preview_image: previewImage } = project;
+  const { id, proj_name: projName, preview_image: previewImage } = props.project;
   const classes = useStyles();
 
-  console.log(project)
-  console.log(classes)
+  console.log('project id', id)
 
   return (
     <Card>
@@ -40,7 +38,7 @@ const ProjectListMainCard = function(props) {
         {shouldExpandPartsTable ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </IconButton>
     </CardActions>
-    {shouldExpandPartsTable ? <ProjectListMainCardTable /> : null}
+    {shouldExpandPartsTable ? <ProjectListMainCardTable id={id}/> : null}
     </Card>
   )
 }
