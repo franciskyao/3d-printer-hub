@@ -18,7 +18,7 @@ const ProjectListMainCardTable = function(props) {
   const [ newPartAvailable, setNewPartAvailable] = useState(null);
   const [ newPartNeeded, setNewPartNeeded ] = useState(null);
   const [ newPartComplete, setNewPartComplete ] = useState(null);
-  const [ partsList, setPartsList ] = useState(mockPart);
+  const [ partsList, setPartsList ] = useState(null);
   // id: 2,
   // project_id: 3,
   // part_name: "m3 screws",
