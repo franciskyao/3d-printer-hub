@@ -22,7 +22,7 @@ const ProjectListMainCard = function(props) {
   const { id, proj_name: projName, preview_image: previewImage } = props.project;
   const classes = useStyles();
 
-  console.log('project id', id)
+  // console.log('project id', id)
 
   return (
     <Card>
