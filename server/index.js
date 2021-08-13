@@ -50,6 +50,13 @@ app.delete('/remove', (req, res) => {
   pgMethods.removeProject(id, res);
 })
 
+app.get('/getPartsOfProject', (req, res) => {
+  const url = new URL(`http://localhost:3000${req.url}`);
+  const urlParams = new URLSearchParams(url.search);
+  const projectId = urlParams.get('id');
+  pgMethods.getProjectParts(projectId, res);
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
