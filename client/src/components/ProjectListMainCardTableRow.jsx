@@ -9,11 +9,12 @@ import IconButton from '@material-ui/core/IconButton';
 const ProjectListMainCardTableRow = function(props) {
   const { id: partId, project_id: projectId, part_name: partName, part_available: partAvailable, part_needed: partNeeded, part_complete: partComplete } = props.part;
 
-  console.log('this is part id', partId)
+  // console.log('this is part id', partId)
 
   const handleDeleteButton = function() {
-    console.log('I delete this part from db');
-    console.log('I update the part list')
+    axios.delete('/removeAPart', {params: {id: partId}})
+      .then((success) => props.updatePartsList())
+      .catch((err) => console.log(`Failed to delete part ${partId}`))
   }
 
   const editPart = function() {
