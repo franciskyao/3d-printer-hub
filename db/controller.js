@@ -55,3 +55,4 @@ module.exports.addProject = addProject;
 module.exports.removeProject = removeProject;
 module.exports.getProjectParts = getProjectParts;
 module.exports.removeAllParts = removeAllParts;
+module.exports.removeAPart = removeAPart;
