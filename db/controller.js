@@ -41,12 +41,6 @@ const getProjectParts = function(id, res) {
     .catch((err) => console.log(`Failed to get parts of project ${id}`))
 }
 
-const removeAllParts = function(projectId, res) {
-  pool.query(`Delete FROM projectParts WHERE project_id = ${projectId}`)
-    .then((success) => res.send(success))
-    .catch((err) => console.log(`Failed to delete parts of project ${projectId}`))
-}
-
 const removeAPart = function(partId, res) {
   pool.query(`Delete FROM projectParts WHERE id = ${partId}`)
     .then((success) => res.send(success))
@@ -57,5 +51,4 @@ module.exports.getAll = getAll;
 module.exports.addProject = addProject;
 module.exports.removeProject = removeProject;
 module.exports.getProjectParts = getProjectParts;
-module.exports.removeAllParts = removeAllParts;
 module.exports.removeAPart = removeAPart;
