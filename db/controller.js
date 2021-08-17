@@ -28,7 +28,10 @@ const addProject = function(req, res) {
 }
 
 const removeProject = function(id, res) {
-  pool.query(`DELETE FROM projects3d WHERE id = ${id}`)
+  console.log('id in controller', id)
+  pool.query(`DELETE FROM projectParts WHERE project_id = ${id}; DELETE FROM projects3d WHERE id = ${id}`)
+    .then((success) => console.log('Successfully deleted project and parts'))
+    .catch((err) => console.log(`Failed to delete parts of project ${id}`))
   res.end('')
 }
 
