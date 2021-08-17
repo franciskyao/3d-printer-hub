@@ -7,6 +7,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
+import FormControl from '@material-ui/core/FormControl';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import Select from '@material-ui/core/Select';
 import AddIcon from '@material-ui/icons/Add';
 import ProjectListMainCardTableRow from './ProjectListMainCardTableRow.jsx';
 
@@ -19,6 +22,7 @@ const ProjectListMainCardTable = function(props) {
   const [ newPartNeeded, setNewPartNeeded ] = useState(null);
   const [ newPartComplete, setNewPartComplete ] = useState(null);
   const [ partsList, setPartsList ] = useState(null);
+
   // id: 2,
   // project_id: 3,
   // part_name: "m3 screws",
@@ -37,6 +41,11 @@ const ProjectListMainCardTable = function(props) {
   }
 
   const handleSaveButton = function() {
+    if (newPartName && newPartAvailable && newPartNeeded && newPartComplete !== null) {
+      console.log('entry complete')
+    } else {
+      console.log('Incomplete entry')
+    }
     //need id
     //put request to postgres
   }
@@ -100,11 +109,12 @@ const ProjectListMainCardTable = function(props) {
               />
             </TableCell>
             <TableCell>
-              <TextField
-                placeholder="Enter Part Name"
-                margin="dense"
-                variant="outlined"
-              />
+              <FormControl variant="outlined" onChange={(e)=> (setNewPartComplete(e.target.value))}>
+                <NativeSelect variant="outlined" >
+                  <option value={true}>Complete</option>
+                  <option value={false}>Incomplete</option>
+                </NativeSelect>
+              </FormControl>
             </TableCell>
             <TableCell>
               <IconButton onClick={handleSaveButton}>
