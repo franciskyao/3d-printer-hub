@@ -43,7 +43,7 @@ app.post('/addproject', (req, res) => {
   pgMethods.addProject(req, res);
 })
 
-app.delete('/remove', (req, res) => {
+app.delete('/removeProject', (req, res) => {
   const url = new URL(`http://localhost:3000${req.url}`);
   const urlParams = new URLSearchParams(url.search);
   const id = urlParams.get('id');
