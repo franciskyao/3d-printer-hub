@@ -57,13 +57,6 @@ app.get('/getPartsOfProject', (req, res) => {
   pgMethods.getProjectParts(projectId, res);
 })
 
-app.delete('/removePartsOfProject', (req, res) => {
-  const url = new URL(`http://localhost:3000${req.url}`);
-  const urlParams = new URLSearchParams(url.search);
-  const id = urlParams.get('id');
-  pgMethods.removeAllParts(id, res);
-})
-
 app.delete('/removeAPart', (req, res) => {
   const url = new URL(`http://localhost:3000${req.url}`);
   const urlParams = new URLSearchParams(url.search);
