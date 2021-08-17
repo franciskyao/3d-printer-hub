@@ -13,9 +13,9 @@ function ProjectListEntry (props) {
   const { id, proj_name, public_url: url, preview_image: img } = props.project
 
   const removeEntry = function() {
-    axios.delete('/remove', {params: {id: id}})
+    axios.delete('/removeProject', {params: {id: id}})
       .then((success) => props.updateList())
-      .catch((err) => console.log('Entry removed'))
+      .catch((err) => console.log('Failed to remove project'))
   }
 
   const placeHolderFunction = function() {
@@ -33,7 +33,7 @@ function ProjectListEntry (props) {
         primary={<a href={url}>{proj_name}</a>}
       />
       <ListItemSecondaryAction>
-        <IconButton  onClick={placeHolderFunction} edge="end" aria-label="delete">
+        <IconButton  onClick={removeEntry} edge="end" aria-label="delete">
           <DeleteIcon/>
         </IconButton>
       </ListItemSecondaryAction>
