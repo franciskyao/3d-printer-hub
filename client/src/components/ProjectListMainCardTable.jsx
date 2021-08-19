@@ -23,13 +23,6 @@ const ProjectListMainCardTable = function(props) {
   const [ newPartComplete, setNewPartComplete ] = useState(null);
   const [ partsList, setPartsList ] = useState(null);
 
-  // id: 2,
-  // project_id: 3,
-  // part_name: "m3 screws",
-  // part_available: 6,
-  // part_needed: 3,
-  // part_complete: false
-
   const updatePartsList = function() {
     axios.get('/getPartsOfProject', {
       params: {
@@ -42,20 +35,25 @@ const ProjectListMainCardTable = function(props) {
 
   const handleSaveButton = function() {
     if (newPartName && newPartAvailable && newPartNeeded && newPartComplete !== null) {
-      console.log('entry complete')
+      axios.get('/addAPart', {
+        params: {
+          projectId: projectId,
+          newPartName: newPartName,
+          newPartAvailable: newPartAvailable,
+          newPartNeeded: newPartNeeded,
+          newPartComplete: newPartComplete,
+        }
+      })
+        .then((success) => updatePartsList())
+        .catch((err) => console.log('Failed to add part'))
     } else {
       console.log('Incomplete entry')
     }
-    //need id
-    //put request to postgres
   }
 
   useEffect(()=> (
     updatePartsList()
   ),[props.id])
-
-  const addPart = function () {
-  }
 
   return (
     <>
