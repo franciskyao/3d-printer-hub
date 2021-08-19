@@ -47,8 +47,19 @@ const removeAPart = function(partId, res) {
     .catch((err) => console.log(`Failed to delete parts of project ${partId}`))
 }
 
+const addAPart = function(projectId, part_name, part_available, part_needed, part_complete, res) {
+  pool.query(`INSERT INTO projectParts (project_id, part_name, part_available, part_needed, part_complete)
+  VALUES (${projectId}, '${part_name}', ${part_available} , ${part_needed}, ${part_complete})`)
+    .then((success) => {
+      console.log(`Successfully added ${part_name}`)
+      res.send(success)
+    })
+    .catch((err) => console.log('Failed to add part of project'))
+}
+
 module.exports.getAll = getAll;
 module.exports.addProject = addProject;
 module.exports.removeProject = removeProject;
 module.exports.getProjectParts = getProjectParts;
 module.exports.removeAPart = removeAPart;
+module.exports.addAPart = addAPart;
