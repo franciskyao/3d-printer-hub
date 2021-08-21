@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Menu = function (props) {
   const classes = useStyles();
-  const { changeMainDisplay } = props;
+  const { changeMainDisplay, projectCategories } = props;
 
   return (
     <div className={classes.root}>
@@ -54,6 +55,7 @@ const Menu = function (props) {
           <Typography variant="h6" noWrap>
             3D Printer Hub
           </Typography>
+          <TextField />
         </Toolbar>
       </AppBar>
       <div className={classes.appBar} />
@@ -73,39 +75,29 @@ const Menu = function (props) {
               Active 3D Printers
             </ListItem>
           </ListItem>
-        </List>
         <Divider />
-        <List>
           <ListItem>
             <ListItem button onClick={() => changeMainDisplay('esteps')}>
               E-Step Calculator
             </ListItem>
           </ListItem>
-        </List>
         <Divider />
-        <List>
           <ListItem>
             <ListItem button onClick={() => changeMainDisplay('hotend')}>
               Hotend
             </ListItem>
           </ListItem>
-        </List>
-        <List>
           <ListItem>
             <ListItem button onClick={() => changeMainDisplay('extruder')}>
               Extruder
             </ListItem>
           </ListItem>
-        </List>
-        <List>
           <ListItem>
             <ListItem button onClick={() => changeMainDisplay('project')}>
               Project
             </ListItem>
           </ListItem>
-        </List>
         <Divider />
-        <List>
           <ListItem>
             <ListItem button onClick={() => changeMainDisplay('blTouch')}>
               Configuring BL-Touch
