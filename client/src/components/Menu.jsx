@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -46,6 +47,13 @@ const useStyles = makeStyles((theme) => ({
 const Menu = function (props) {
   const classes = useStyles();
   const { changeMainDisplay } = props;
+  const [searchEntry, setSearchEntry] = useState(null)
+
+  const onSearchEnter = function(e) {
+    if (e.code === 'Enter'){
+      console.log('',searchEntry)
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -55,6 +63,11 @@ const Menu = function (props) {
           <Typography variant="h6" noWrap>
             3D Printer Hub
           </Typography>
+          <InputBase
+            onKeyPress={onSearchEnter}
+            onChange={(e) => setSearchEntry(e.target.value)}
+            placeholder="Search..."
+          />
         </Toolbar>
       </AppBar>
       <div className={classes.appBar} />
