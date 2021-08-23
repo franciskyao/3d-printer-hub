@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -6,13 +6,14 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
+import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import SearchIcon from '@material-ui/icons/Search';
 
 const drawerWidth = 240;
 const menuHeight = '56';
@@ -20,6 +21,7 @@ const menuHeight = '56';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    flexGrow: 1,
   },
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -46,16 +48,26 @@ const useStyles = makeStyles((theme) => ({
 const Menu = function (props) {
   const classes = useStyles();
   const { changeMainDisplay, projectCategories } = props;
+  const [searchEntry, setSearchEntry] = useState(null)
+
+  const onSearchEnter = function(e) {
+    if (e.code === 'Enter'){
+      console.log('',searchEntry)
+    }
+  }
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
             3D Printer Hub
           </Typography>
-          <TextField />
+          <InputBase
+            onKeyPress={onSearchEnter}
+            onChange={(e) => setSearchEntry(e.target.value)}
+            placeholder="Search..."
+          />
         </Toolbar>
       </AppBar>
       <div className={classes.appBar} />
