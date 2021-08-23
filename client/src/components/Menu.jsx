@@ -1,4 +1,5 @@
 import React, { useState }  from 'react';
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -51,7 +52,17 @@ const Menu = function (props) {
 
   const onSearchEnter = function(e) {
     if (e.code === 'Enter'){
-      console.log('',searchEntry)
+      console.log('hellow',searchEntry)
+      axios.get('/search', {
+        params: {
+          search: searchEntry
+        }
+      })
+        .then((results) => {
+          // setSearchResult(results.data.hits)
+          console.log(results.data.hits)
+        })
+        .catch((err) => console.log(err))
     }
   }
 
