@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     margin: 0
   },
+  spacer: {
+    height: 56
+  },
   drawer: {
     width: 250
   },
@@ -41,7 +44,8 @@ function App() {
   const [extruderList, setExtruderList] = useState(null);
   const [projectList, setProjectList] = useState(null);
   const [mainDisplay, setMainDisplay] = useState(null);
-  const [listDisplay, setListDisplay] = useState(null)
+  const [listDisplay, setListDisplay] = useState(null);
+  const [projectCategories, setProjectCategories] = useState(null);
   const classes = useStyles();
 
   useEffect(() => {
@@ -68,8 +72,12 @@ function App() {
         const hotends = [];
         const extruders = [];
         const projects = [];
+        const categoryList = [];
 
         dataInDb.forEach((model) => {
+          if (categoryList.indexOf(model.category) === -1) {
+            categoryList.push(model.category);
+          }
           if (model.category === 'hotend') {
             hotends.push(model);
           } else if (model.category === 'extruder') {
@@ -78,6 +86,7 @@ function App() {
             projects.push(model);
           }
         })
+        setProjectCategories(categoryList)
         setHotendList(hotends);
         setExtruderList(extruders);
         setProjectList(projects)
@@ -89,10 +98,9 @@ function App() {
     <>
       <Grid container spacing={10}>
         <Grid container>
-          <Menu changeMainDisplay={changeMainDisplay}/>
+          <Menu changeMainDisplay={changeMainDisplay} projectCategories={projectCategories}/>
         </Grid>
-        <Grid item id="monitor"  lg={2}>
-          {/* <PrinterList /> */}
+        <Grid item id="monitor" lg={2}>
         </Grid>
         <Grid item id="mainDisplay" lg={7}>
           {mainDisplay === 'blTouch'? <BLTouch updateList={updateList}/>
