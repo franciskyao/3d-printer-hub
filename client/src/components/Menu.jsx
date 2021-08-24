@@ -15,6 +15,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
+import mockData from './mockData.js';
+
 const drawerWidth = 240;
 const spacer = 64;
 
@@ -47,22 +49,25 @@ const useStyles = makeStyles((theme) => ({
 
 const Menu = function (props) {
   const classes = useStyles();
-  const { changeMainDisplay } = props;
+  const { changeMainDisplay, updateSearchList } = props;
   const [searchEntry, setSearchEntry] = useState(null)
 
   const onSearchEnter = function(e) {
     if (e.code === 'Enter'){
       console.log('hellow',searchEntry)
-      axios.get('/search', {
-        params: {
-          search: searchEntry
-        }
-      })
-        .then((results) => {
-          // setSearchResult(results.data.hits)
-          console.log(results.data.hits)
-        })
-        .catch((err) => console.log(err))
+      changeMainDisplay('searchResults')
+      updateSearchList(mockData)
+
+      // axios.get('/search', {
+      //   params: {
+      //     search: searchEntry
+      //   }
+      // })
+      //   .then((results) => {
+      //     updateSearchList(results.data.hits)
+      //     setMainDisplay="searchResults"
+      //   })
+      //   .catch((err) => console.log(err))
     }
   }
 
@@ -71,9 +76,6 @@ const Menu = function (props) {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" noWrap>
-            3D Printer Hub
-          </Typography>
           <InputBase
             onKeyPress={onSearchEnter}
             onChange={(e) => setSearchEntry(e.target.value)}
@@ -81,7 +83,11 @@ const Menu = function (props) {
           />
         </Toolbar>
       </AppBar>
-      <div className={classes.appBar} />
+      <div className={classes.appBar}>
+        <Typography variant="h6" noWrap>
+          3D Printer Hub
+        </Typography>
+      </div>
       <Drawer
         className={classes.drawer}
         variant="permanent"
