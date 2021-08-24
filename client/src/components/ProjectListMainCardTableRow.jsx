@@ -9,8 +9,6 @@ import IconButton from '@material-ui/core/IconButton';
 const ProjectListMainCardTableRow = function(props) {
   const { id: partId, project_id: projectId, part_name: partName, part_available: partAvailable, part_needed: partNeeded, part_complete: partComplete } = props.part;
 
-  // console.log('this is part id', partId)
-
   const handleDeleteButton = function() {
     axios.delete('/removeAPart', {params: {id: partId}})
       .then((success) => props.updatePartsList())
@@ -18,7 +16,6 @@ const ProjectListMainCardTableRow = function(props) {
   }
 
   const editPart = function() {
-    //
   }
 
   return (
