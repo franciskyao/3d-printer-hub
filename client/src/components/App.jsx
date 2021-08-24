@@ -10,7 +10,7 @@ import ProjectListMain from './ProjectListMain.jsx';
 import ESteps from './ESteps.jsx';
 import Menu from './Menu.jsx';
 import BLTouch from './BLTouch.jsx';
-import mockData from './mockData.js';
+import SearchMain from './SearchMain.jsx';
 import '../style.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -19,6 +19,9 @@ import Drawer from '@material-ui/core/Drawer';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
+
+
+import mockData from './mockData.js';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -43,6 +46,7 @@ function App() {
   const [hotendList, setHotendList] = useState(null);
   const [extruderList, setExtruderList] = useState(null);
   const [projectList, setProjectList] = useState(null);
+  const [searchResultList, setSearchResultList] = useState(null)
   const [mainDisplay, setMainDisplay] = useState(null);
   const [listDisplay, setListDisplay] = useState(null);
   const [projectCategories, setProjectCategories] = useState(null);
@@ -54,6 +58,10 @@ function App() {
 
   function changeMainDisplay(categoryToDisplay) {
     setMainDisplay(categoryToDisplay)
+  }
+
+  function updateSearchList(searchResults) {
+    setSearchResultList(searchResults)
   }
 
   const addPrinter = function (ip) {
@@ -94,11 +102,17 @@ function App() {
       .catch((err) => console.log('Failed to get projects'))
   }
 
+  console.log(mainDisplay)
+
   return (
     <>
       <Grid container spacing={10}>
         <Grid container>
-          <Menu changeMainDisplay={changeMainDisplay} projectCategories={projectCategories}/>
+          <Menu
+            changeMainDisplay={changeMainDisplay}
+            projectCategories={projectCategories}
+            updateSearchList={updateSearchList}
+          />
         </Grid>
         <Grid item id="monitor" lg={2}>
         </Grid>
@@ -107,6 +121,7 @@ function App() {
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
           : mainDisplay === 'activePrinters' ? <PrinterList printerList={printerList} updateList={updateList}/>
           : mainDisplay === 'project' ? <ProjectListMain projectList={projectList}/>
+          : mainDisplay === 'searchResults' ? <SearchMain searchResultList={searchResultList}/>
           :null}
         </Grid>
         <Grid item id="list" lg={3}>
