@@ -53,7 +53,7 @@ function SearchResultEntry(props) {
   }
 
   return (
-    <div class="searchCard">
+    <div className="searchCard">
       <Card>
         <CardHeader
           title={<b>{name}</b>}
@@ -62,14 +62,15 @@ function SearchResultEntry(props) {
           className={classes.media}
           image={preview_image}/>
         <CardActions>
-          <IconButton>
-            <AddIcon onClick={addToDb}/>
+          <IconButton onClick={addToDb}>
+            <AddIcon/>
           </IconButton>
           <InputLabel id="project category">category</InputLabel>
           <Select
             labelId="project category"
-            onChange={(e) => setCategory(e.target.value)}>
-            <MenuItem value=""></MenuItem>
+            onChange={(e) => setCategory(e.target.value)}
+            defaultValue=''>
+            {/* <MenuItem value=""></MenuItem> */}
             <MenuItem value="extruder">extruder</MenuItem>
             <MenuItem value="hotend">hotend</MenuItem>
             <MenuItem value="project">project</MenuItem>
