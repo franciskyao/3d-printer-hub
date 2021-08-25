@@ -53,7 +53,7 @@ function App() {
   const classes = useStyles();
 
   useEffect(() => {
-    updateList()
+    updateList();
   }, [])
 
   function changeMainDisplay(categoryToDisplay) {
@@ -102,8 +102,6 @@ function App() {
       .catch((err) => console.log('Failed to get projects'))
   }
 
-  console.log(mainDisplay)
-
   return (
     <>
       <Grid container spacing={10}>
@@ -121,7 +119,7 @@ function App() {
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
           : mainDisplay === 'activePrinters' ? <PrinterList printerList={printerList} updateList={updateList}/>
           : mainDisplay === 'project' ? <ProjectListMain projectList={projectList}/>
-          : mainDisplay === 'searchResults' ? <SearchMain searchResultList={searchResultList}/>
+          : mainDisplay === 'searchResults' ? <SearchMain searchResultList={searchResultList}updateList={updateList}/>
           :null}
         </Grid>
         <Grid item id="list" lg={3}>
