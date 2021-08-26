@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import SearchResultEntry from './SearchResultEntry.jsx'
+import Grid from '@material-ui/core/Grid';
 
 const SearchMain = function(props) {
   console.log(props.searchResultList)
   return (
-    <>
-      {props.searchResultList && props.searchResultList.map((entry) => <SearchResultEntry entry={entry} updateList={props.updateList} key={entry.id}/>)}
-    </>
+    <Grid container>
+      {props.searchResultList && props.searchResultList.map((entry) =>
+        (<Grid item md={4}>
+          <SearchResultEntry
+            entry={entry}
+            updateList={props.updateList}
+            key={entry.id}/>
+          </Grid>
+        ))}
+    </Grid>
   )
 }
 
