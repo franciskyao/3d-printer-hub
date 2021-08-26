@@ -53,21 +53,20 @@ const Menu = function (props) {
   const [searchEntry, setSearchEntry] = useState(null)
 
   const onSearchEnter = function(e) {
-    if (e.code === 'Enter'){
-      console.log('hellow',searchEntry)
-      changeMainDisplay('searchResults')
-      updateSearchList(mockData)
+    if (e.code === 'Enter' || e.code ==='NumpadEnter'){
+      // changeMainDisplay('searchResults')
+      // updateSearchList(mockData)
 
-      // axios.get('/search', {
-      //   params: {
-      //     search: searchEntry
-      //   }
-      // })
-      //   .then((results) => {
-      //     updateSearchList(results.data.hits)
-      //     setMainDisplay="searchResults"
-      //   })
-      //   .catch((err) => console.log(err))
+      axios.get('/search', {
+        params: {
+          search: searchEntry
+        }
+      })
+        .then((results) => {
+          updateSearchList(results.data.hits)
+          changeMainDisplay('searchResults')
+        })
+        .catch((err) => console.log(err))
     }
   }
 
