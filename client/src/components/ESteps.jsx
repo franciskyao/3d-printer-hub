@@ -17,12 +17,19 @@ function ESteps (props) {
   const classes = useStyles();
 
   const handleCalculateButton = function() {
-    const current = parseInt(currentEsteps.value);
-    const target = parseInt(targetLength.value);
-    const measured = parseInt(measuredLength.value);
+    const current = currentEsteps.value;
+    const target = targetLength.value;
+    const measured = measuredLength.value;
     const newEsteps = current * (measured/target)
     setFinalEsteps(newEsteps)
   };
+
+  const calculate = function() {
+    if (currentEsteps.value && targetLength.value !== 0 && measuredLength.value) {
+      const newEsteps = currentEsteps.value * (measuredLength.value/targetLength.value)
+      setFinalEsteps(newEsteps)
+    }
+  }
 
   return (
     <>
@@ -35,6 +42,7 @@ function ESteps (props) {
         helperText="Enter m503 command"
         margin="dense"
         variant="outlined"
+        onChange={calculate}
       />
       <br />
       <TextField
@@ -46,6 +54,7 @@ function ESteps (props) {
         helperText="Enter a length"
         margin="dense"
         variant="outlined"
+        onChange={calculate}
       />
       <br />
       <TextField
@@ -58,15 +67,16 @@ function ESteps (props) {
         helperText="Use a ruler"
         margin="dense"
         variant="outlined"
+        onChange={calculate}
       />
       <br />
       <br />
-      <Button className={classes.calculateButton}
+      {/* <Button className={classes.calculateButton}
         onClick={handleCalculateButton}
         variant="contained"
         color="primary">
           Calculate
-      </Button>
+      </Button> */}
       <p>Your new e-steps is: {finalEsteps && finalEsteps}</p>
     </>
   )
