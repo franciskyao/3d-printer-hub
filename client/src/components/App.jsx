@@ -81,6 +81,7 @@ function App() {
         const extruders = [];
         const projects = [];
         const categoryList = [];
+        setDbList(models.data.rows);
 
         dataInDb.forEach((model) => {
           if (categoryList.indexOf(model.category) === -1) {
@@ -118,14 +119,16 @@ function App() {
           {mainDisplay === 'blTouch'? <BLTouch updateList={updateList}/>
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
           : mainDisplay === 'activePrinters' ? <PrinterList printerList={printerList} updateList={updateList}/>
-          : mainDisplay === 'project' ? <ProjectListMain projectList={projectList}/>
+          : mainDisplay === 'project' || mainDisplay === 'hotend'  || mainDisplay === 'extruder' ? <ProjectListMain projectList={dbList.filter(project => project.category === mainDisplay)}/>
           : mainDisplay === 'searchResults' ? <SearchMain searchResultList={searchResultList}updateList={updateList}/>
           :null}
         </Grid>
         <Grid item id="list" lg={3}>
-          {mainDisplay === 'extruder' && extruderList ? (<ExtruderList extruderList={extruderList} updateList={updateList}/>)
-          : mainDisplay === 'hotend' && hotendList ? (<HotendList hotendList={hotendList} updateList={updateList}/>)
-          : mainDisplay === 'project' && projectList ? (<ProjectList projectList={projectList} updateList={updateList}/>)
+          {mainDisplay === 'extruder' || mainDisplay === 'hotend' ||  mainDisplay === 'project'  ? (<ProjectList
+            projectList={dbList.filter(project => project.category === mainDisplay)}
+            updateList={updateList}
+            category={mainDisplay}
+          />)
           : mainDisplay === 'activePrinters' ? (<PrinterAdd printerList={printerList} addPrinter={addPrinter}/>)
           : null}
         </Grid>
