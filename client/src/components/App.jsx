@@ -3,8 +3,6 @@ import axios from 'axios';
 import Search from './Search.jsx';
 import PrinterAdd from './PrinterAdd.jsx';
 import PrinterList from './PrinterList.jsx';
-import HotendList from './HotendList.jsx';
-import ExtruderList from './ExtruderList.jsx';
 import ProjectList from './ProjectList.jsx';
 import ProjectListMain from './ProjectListMain.jsx';
 import ESteps from './ESteps.jsx';
@@ -43,8 +41,6 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [dbList, setDbList] = useState(null);
   const [printerList, setPrinterList] = useState([]);
-  const [hotendList, setHotendList] = useState(null);
-  const [extruderList, setExtruderList] = useState(null);
   const [projectList, setProjectList] = useState(null);
   const [searchResultList, setSearchResultList] = useState(null)
   const [mainDisplay, setMainDisplay] = useState(null);
@@ -76,29 +72,7 @@ function App() {
   function updateList() {
     axios.get('/getmodels')
       .then((models) => {
-        const dataInDb = models.data.rows;
-        const hotends = [];
-        const extruders = [];
-        const projects = [];
-        const categoryList = [];
         setDbList(models.data.rows);
-
-        dataInDb.forEach((model) => {
-          if (categoryList.indexOf(model.category) === -1) {
-            categoryList.push(model.category);
-          }
-          if (model.category === 'hotend') {
-            hotends.push(model);
-          } else if (model.category === 'extruder') {
-            extruders.push(model);
-          } else if (model.category === 'project') {
-            projects.push(model);
-          }
-        })
-        setProjectCategories(categoryList)
-        setHotendList(hotends);
-        setExtruderList(extruders);
-        setProjectList(projects)
       })
       .catch((err) => console.log('Failed to get projects'))
   }
