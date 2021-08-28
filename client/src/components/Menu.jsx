@@ -20,6 +20,10 @@ import mockData from './mockData.js';
 const drawerWidth = 240;
 const spacer = 64;
 
+const capitalizeFirstLetter = function(word) {
+  return word[0].toUpperCase() + word.slice(1);
+}
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -54,9 +58,6 @@ const Menu = function (props) {
 
   const onSearchEnter = function(e) {
     if (e.code === 'Enter' || e.code ==='NumpadEnter'){
-      // changeMainDisplay('searchResults')
-      // updateSearchList(mockData)
-
       axios.get('/search', {
         params: {
           search: searchEntry
@@ -110,21 +111,13 @@ const Menu = function (props) {
             </ListItem>
           </ListItem>
         <Divider />
-          <ListItem>
-            <ListItem button onClick={() => changeMainDisplay('hotend')}>
-              Hotend
+          {['hotend', 'extruder', 'project'].map((category) => (
+            <ListItem>
+              <ListItem button onClick={() => changeMainDisplay(category)}>
+                {capitalizeFirstLetter(category)}
+              </ListItem>
             </ListItem>
-          </ListItem>
-          <ListItem>
-            <ListItem button onClick={() => changeMainDisplay('extruder')}>
-              Extruder
-            </ListItem>
-          </ListItem>
-          <ListItem>
-            <ListItem button onClick={() => changeMainDisplay('project')}>
-              Project
-            </ListItem>
-          </ListItem>
+          ))}
         <Divider />
           <ListItem>
             <ListItem button onClick={() => changeMainDisplay('blTouch')}>
