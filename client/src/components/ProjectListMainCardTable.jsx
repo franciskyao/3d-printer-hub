@@ -10,16 +10,16 @@ import IconButton from '@material-ui/core/IconButton';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import Select from '@material-ui/core/Select';
-import AddIcon from '@material-ui/icons/Add';
+import SaveIcon from '@material-ui/icons/Save';
 import ProjectListMainCardTableRow from './ProjectListMainCardTableRow.jsx';
 
 import mockPart from './mockPart.js';
 
 const ProjectListMainCardTable = function(props) {
   const projectId = props.id;
-  const [ newPartName, setNewPartName ] = useState(null);
-  const [ newPartAvailable, setNewPartAvailable] = useState(null);
-  const [ newPartNeeded, setNewPartNeeded ] = useState(null);
+  const [ newPartName, setNewPartName ] = useState('');
+  const [ newPartAvailable, setNewPartAvailable] = useState(0);
+  const [ newPartNeeded, setNewPartNeeded ] = useState(0);
   const [ newPartComplete, setNewPartComplete ] = useState(null);
   const [ partsList, setPartsList ] = useState(null);
 
@@ -34,7 +34,7 @@ const ProjectListMainCardTable = function(props) {
   }
 
   const handleSaveButton = function() {
-    if (newPartName && newPartAvailable && newPartNeeded && newPartComplete !== null) {
+    if (newPartName && newPartAvailable && newPartNeeded) {
       axios.get('/addAPart', {
         params: {
           projectId: projectId,
@@ -44,7 +44,12 @@ const ProjectListMainCardTable = function(props) {
           newPartComplete: newPartComplete,
         }
       })
-        .then((success) => updatePartsList())
+        .then((success) => {
+          updatePartsList();
+          setNewPartName('')
+          setNewPartAvailable(0);
+          setNewPartNeeded(0);
+        })
         .catch((err) => console.log('Failed to add part'))
     } else {
       console.log('Incomplete entry')
@@ -76,6 +81,7 @@ const ProjectListMainCardTable = function(props) {
           <TableRow>
             <TableCell>
               <TextField
+                value={newPartName}
                 placeholder="Enter Part Name"
                 margin="dense"
                 variant="outlined"
@@ -86,6 +92,7 @@ const ProjectListMainCardTable = function(props) {
             </TableCell>
             <TableCell>
               <TextField
+                value={newPartAvailable}
                 type="number"
                 placeholder="Enter Amount Available"
                 margin="dense"
@@ -97,6 +104,7 @@ const ProjectListMainCardTable = function(props) {
             </TableCell>
             <TableCell>
               <TextField
+                value={newPartNeeded}
                 type="number"
                 placeholder="Enter Amount Needed"
                 margin="dense"
@@ -107,16 +115,10 @@ const ProjectListMainCardTable = function(props) {
               />
             </TableCell>
             <TableCell>
-              <FormControl variant="outlined" onChange={(e)=> (setNewPartComplete(e.target.value))}>
-                <NativeSelect variant="outlined" >
-                  <option value={true}>Complete</option>
-                  <option value={false}>Incomplete</option>
-                </NativeSelect>
-              </FormControl>
             </TableCell>
             <TableCell>
               <IconButton onClick={handleSaveButton}>
-                <AddIcon />
+                <SaveIcon />
               </IconButton>
             </TableCell>
           </TableRow>
