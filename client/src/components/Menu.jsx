@@ -112,7 +112,7 @@ const Menu = function (props) {
           </ListItem>
         <Divider />
           {['hotend', 'extruder', 'project'].map((category) => (
-            <ListItem>
+            <ListItem key={category}>
               <ListItem button onClick={() => changeMainDisplay(category)}>
                 {capitalizeFirstLetter(category)}
               </ListItem>
