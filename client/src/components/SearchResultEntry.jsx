@@ -41,7 +41,6 @@ function SearchResultEntry(props) {
   const classes = cardStyles();
 
   function addToDb() {
-    console.log('Add data to db');
     axios.post('/addproject', {
       name: name,
       public_url: public_url,

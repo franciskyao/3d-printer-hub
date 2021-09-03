@@ -36,8 +36,6 @@ function Search (props) {
 
   return (
     <div id="searchList">
-      {/* <input type="button" onClick={search} value="Previous"></input>
-      <input type="button" onClick={search} value="Next"></input> */}
       <label>Search Thingiverse</label><br/>
       <input type="text" id="searchThingy"></input>
       <input type="button" onClick={search} value="Search"></input>

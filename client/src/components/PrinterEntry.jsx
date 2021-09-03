@@ -50,7 +50,6 @@ function PrinterEntry (props) {
   } else {
     streamUrl = `${props.printer}/webcam/?action=stream`;
   }
-  console.log(streamUrl)
   return (
     <div>
       <Card>

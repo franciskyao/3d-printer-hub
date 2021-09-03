@@ -20,7 +20,7 @@ const ProjectListMainCardTableRow = function(props) {
     part_complete: partComplete
   } = props.part;
 
-  const [ isEditingQuantity, setIsEditingQuantity ] = useState(false);
+  const [ isEditing, setIsEditing ] = useState(false);
   const [ newPartName, setNewPartName ] = useState('');
   const [ newPartAvailable, setNewPartAvailable] = useState(0);
   const [ newPartNeeded, setNewPartNeeded ] = useState(0);
@@ -35,9 +35,11 @@ const ProjectListMainCardTableRow = function(props) {
   }
 
   const editPartSave = function() {
+    // axios.get('editPart', {params: {id: partId, newPartName, newPartAvailable, new}})
+    // setIsEditing(!isEditing)
   }
 
-  if (isEditingQuantity) {
+  if (isEditing) {
     return (
       <TableRow>
         <TableCell>
@@ -92,7 +94,7 @@ const ProjectListMainCardTableRow = function(props) {
           <IconButton onClick={handleDeleteButton}>
             <DeleteIcon />
           </IconButton>
-          <IconButton onClick={() => setIsEditingQuantity(!isEditingQuantity)}>
+          <IconButton onClick={() => setIsEditing(!isEditing)}>
             <EditIcon />
           </IconButton>
         </TableCell>

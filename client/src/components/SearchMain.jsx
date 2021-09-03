@@ -3,7 +3,6 @@ import SearchResultEntry from './SearchResultEntry.jsx'
 import Grid from '@material-ui/core/Grid';
 
 const SearchMain = function(props) {
-  console.log(props.searchResultList)
   return (
     <Grid container>
       {props.searchResultList && props.searchResultList.map((entry) =>
