@@ -31,12 +31,59 @@ const ProjectListMainCardTableRow = function(props) {
       .catch((err) => console.log(`Failed to delete part ${partId}`))
   }
 
-  const handleAddSubtractOwned = function() {
-  }
-
   const editPartSave = function() {
-    // axios.get('editPart', {params: {id: partId, newPartName, newPartAvailable, new}})
-    // setIsEditing(!isEditing)
+    let editedName;
+    let editedAvailable;
+    let editedNeeded;
+    let editedComplete = false;
+
+    if (newPartName === '') {
+      editedName = partName;
+    } else {
+      editedName = newPartName
+    }
+
+    if (newPartAvailable !== partAvailable) {
+      editedAvailable = newPartAvailable
+    } else {
+      editedAvailable = partAvailable
+    }
+
+    if (newPartNeeded !== partNeeded) {
+      editedNeeded = newPartNeeded
+    } else {
+      editedNeeded = partNeeded
+    }
+
+    if (newPartAvailable >= newPartNeeded) {
+      editedComplete = true
+    }
+    // const partId = urlParams.get('partId');
+    // const part_name = urlParams.get('newPartName');
+    // const part_available = urlParams.get('newPartAvailable');
+    // const part_needed = urlParams.get('newPartNeeded');
+    // const part_complete = urlParams.get('newPartComplete');
+    console.log({
+      partId,
+      editedName,
+      editedAvailable,
+      editedNeeded,
+      editedComplete,
+    })
+    axios.get('/editAPart', {
+      params: {
+        partId: partId,
+        newPartName: editedName,
+        newPartAvailable: parseInt(editedAvailable),
+        newPartNeeded: parseInt(editedNeeded),
+        newPartComplete: editedComplete,
+    }})
+      .then((success) => {
+        console.log('Successfully edited?')
+        props.updatePartsList()
+        setIsEditing(!isEditing)
+      })
+      .catch((err) => console.log(`Failed to update part ${newPartName}`))
   }
 
   if (isEditing) {
