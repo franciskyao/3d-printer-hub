@@ -76,6 +76,26 @@ app.get('/addAPart', (req, res) => {
   pgMethods.addAPart(projectId, part_name, part_available, part_needed, part_complete, res)
 })
 
+app.get('/editAPart', (req, res) => {
+  const url = new URL(`http://localhost:3000${req.url}`);
+  const urlParams = new URLSearchParams(url.search);
+  const partId = urlParams.get('partId');
+  const part_name = urlParams.get('newPartName');
+  const part_available = urlParams.get('newPartAvailable');
+  const part_needed = urlParams.get('newPartNeeded');
+  const part_complete = urlParams.get('newPartComplete');
+  console.log({
+    partId,
+    part_name,
+    part_available,
+    part_needed,
+    part_complete
+  })
+
+  pgMethods.editAPart(partId, part_name, part_available, part_needed, part_complete, res)
+
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
