@@ -41,7 +41,7 @@ const getProjectParts = function(id, res) {
 }
 
 const removeAPart = function(partId, res) {
-  pool.query(`Delete FROM projectParts WHERE id = ${partId}`)
+  pool.query(`DELETE FROM projectParts WHERE id = ${partId}`)
     .then((success) => res.send(success))
     .catch((err) => console.log(`Failed to delete parts of project ${partId}`))
 }
@@ -56,9 +56,23 @@ const addAPart = function(projectId, part_name, part_available, part_needed, par
     .catch((err) => console.log('Failed to add part of project'))
 }
 
+const editAPart = function(partId, part_name, part_available, part_needed, part_complete, res) {
+  console.log(`UPDATE projectParts SET part_name = '${part_name}', part_available = ${part_available}, part_needed = ${part_needed}, part_complete = ${part_complete}
+  WHERE id = ${partId}`)
+
+  pool.query(`UPDATE projectParts SET part_name = '${part_name}', part_available = ${part_available}, part_needed = ${part_needed}, part_complete = ${part_complete}
+  WHERE id = ${partId}`)
+    .then((success) => {
+      console.log(`Successfully edited ${part_name}`);
+      res.send(success)
+    })
+    .catch((err) => console.log('Failed to edit part: ', part_name))
+}
+
 module.exports.getAll = getAll;
 module.exports.addProject = addProject;
 module.exports.removeProject = removeProject;
 module.exports.getProjectParts = getProjectParts;
 module.exports.removeAPart = removeAPart;
 module.exports.addAPart = addAPart;
+module.exports.editAPart = editAPart;
