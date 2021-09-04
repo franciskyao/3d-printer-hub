@@ -66,7 +66,7 @@ const ProjectListMainCardTable = function(props) {
         <TableHead>
           <TableRow>
             <TableCell>Part Name</TableCell>
-            <TableCell>Quantity Owned</TableCell>
+            <TableCell>Quantity Available</TableCell>
             <TableCell>Quantity Needed</TableCell>
             <TableCell>Completed</TableCell>
             <TableCell></TableCell>
