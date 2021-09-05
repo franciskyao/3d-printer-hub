@@ -53,21 +53,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Menu = function (props) {
   const classes = useStyles();
-  const { changeMainDisplay, updateSearchList } = props;
+  const { changeMainDisplay, search } = props;
   const [searchEntry, setSearchEntry] = useState(null)
 
   const onSearchEnter = function(e) {
-    if (e.code === 'Enter' || e.code ==='NumpadEnter'){
-      axios.get('/search', {
-        params: {
-          search: searchEntry
-        }
-      })
-        .then((results) => {
-          updateSearchList(results.data.hits)
-          changeMainDisplay('searchResults')
-        })
-        .catch((err) => console.log(err))
+    if (e.code === 'Enter' || e.code ==='NumpadEnter') {
+      search(searchEntry, 1);
     }
   }
 
