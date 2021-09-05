@@ -47,18 +47,34 @@ function App() {
   const [listDisplay, setListDisplay] = useState(null);
   const [projectCategories, setProjectCategories] = useState(null);
   const [searchEntry, setSearchEntry] = useState(null);
+  const [searchPage, setSearchPage] = useState(1);
   const classes = useStyles();
 
   useEffect(() => {
     updateList();
   }, [])
 
-  function changeMainDisplay(categoryToDisplay) {
+  const changeMainDisplay = function(categoryToDisplay) {
     setMainDisplay(categoryToDisplay)
   }
 
-  function updateSearchList(searchResults) {
-    setSearchResultList(searchResults)
+  const changeSearchPage = function(pageNumber) {
+    setSearchPage(pageNumber)
+  }
+
+  const search = function(searchInThingy, page) {
+    setSearchEntry(searchInThingy)
+    axios.get('/search', {
+      params: {
+        search: searchInThingy,
+        page: page,
+      }
+    })
+      .then((results) => {
+        setSearchResultList(results.data.hits)
+        changeMainDisplay('searchResults')
+      })
+      .catch((err) => console.log(err))
   }
 
   const addPrinter = function (ip) {
@@ -85,7 +101,8 @@ function App() {
           <Menu
             changeMainDisplay={changeMainDisplay}
             projectCategories={projectCategories}
-            updateSearchList={updateSearchList}
+            search={search}
+            changeSearchPage={changeSearchPage}
           />
         </Grid>
         <Grid item id="monitor" lg={2}>
@@ -95,7 +112,11 @@ function App() {
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
           : mainDisplay === 'activePrinters' ? <PrinterList printerList={printerList} updateList={updateList}/>
           : mainDisplay === 'project' || mainDisplay === 'hotend'  || mainDisplay === 'extruder' ? <ProjectListMain projectList={dbList.filter(project => project.category === mainDisplay)}/>
-          : mainDisplay === 'searchResults' ? <SearchMain searchResultList={searchResultList}updateList={updateList} searchEntry={searchEntry} updateSearchList={updateSearchList}/>
+          : mainDisplay === 'searchResults' ? <SearchMain
+            searchResultList={searchResultList}
+            updateList={updateList}
+            searchEntry={searchEntry}
+            search={search}/>
           :null}
         </Grid>
         <Grid item id="list" lg={3}>
