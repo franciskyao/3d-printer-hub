@@ -9,6 +9,23 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const SearchMain = function(props) {
+  const [page, setPage] = useState(1);
+
+  const onSearchEnter = function(e) {
+
+    // axios.get('/search', {
+    //   params: {
+    //     search: props.searchEntry,
+    //     page: page,
+    //   }
+    // })
+    //   .then((results) => {
+    //     updateSearchList(results.data.hits)
+    //     changeMainDisplay('searchResults')
+    //   })
+    //   .catch((err) => console.log(err))
+  }
+
   return (
     <Grid container>
       {props.searchResultList && props.searchResultList.map((entry) =>
@@ -19,21 +36,19 @@ const SearchMain = function(props) {
             key={entry.id}/>
           </Grid>
         ))}
-        <Grid item md={12}>
-          <Button variant="contained" size="large" color="primary">
+
+        <Grid container md={12} justify="center">
+          <Button id="firstPage" onClick={onSearchEnter} variant="contained" size="large" color="primary">
             <ArrowBackIosIcon />
             <ArrowBackIosIcon />
           </Button>
-
-          <Button variant="contained" size="large" color="primary">
+          <Button id="previousPage" onClick={onSearchEnter} variant="contained" size="large" color="primary">
             <ArrowBackIcon />
           </Button>
-
-          <Button variant="contained" size="large" color="primary">
+          <Button id="nextPage" onClick={onSearchEnter} variant="contained" size="large" color="primary">
             <ArrowForwardIcon />
           </Button>
-
-          <Button variant="contained" size="large" color="primary">
+          <Button id="lastPage" onClick={onSearchEnter} variant="contained" size="large" color="primary">
             <ArrowForwardIosIcon />
             <ArrowForwardIosIcon />
           </Button>
