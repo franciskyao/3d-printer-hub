@@ -46,6 +46,7 @@ function App() {
   const [mainDisplay, setMainDisplay] = useState(null);
   const [listDisplay, setListDisplay] = useState(null);
   const [projectCategories, setProjectCategories] = useState(null);
+  const [searchEntry, setSearchEntry] = useState(null);
   const classes = useStyles();
 
   useEffect(() => {
@@ -94,7 +95,7 @@ function App() {
           : mainDisplay === 'esteps' ? <ESteps updateList={updateList}/>
           : mainDisplay === 'activePrinters' ? <PrinterList printerList={printerList} updateList={updateList}/>
           : mainDisplay === 'project' || mainDisplay === 'hotend'  || mainDisplay === 'extruder' ? <ProjectListMain projectList={dbList.filter(project => project.category === mainDisplay)}/>
-          : mainDisplay === 'searchResults' ? <SearchMain searchResultList={searchResultList}updateList={updateList}/>
+          : mainDisplay === 'searchResults' ? <SearchMain searchResultList={searchResultList}updateList={updateList} searchEntry={searchEntry} updateSearchList={updateSearchList}/>
           :null}
         </Grid>
         <Grid item id="list" lg={3}>
