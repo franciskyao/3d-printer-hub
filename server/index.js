@@ -28,7 +28,7 @@ app.get('/search', (req, res) => {
     params: {
       access_token: process.env.THING_TOKEN,
       sort: 'relevant',
-      page: page
+      page: page,
     }
   })
     .then((success) => {
