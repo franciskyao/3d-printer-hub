@@ -7,25 +7,23 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import TextField from '@material-ui/core/TextField';
 
 const SearchMain = function(props) {
-  const [page, setPage] = useState(1);
+  const [customPage, setCustomPage] = useState(1);
   const {search, searchEntry, searchPage, } = props
 
   //add custom page search
 
   const onFirstButton = function() {
-    console.log('First button')
     search(searchEntry, 1);
   }
 
   const onNextButton = function() {
-    console.log('Next button')
     search(searchEntry, searchPage + 1)
   }
 
   const onPreviousButton = function() {
-    console.log('Previous button')
     if (searchPage > 1) {
       search(searchEntry, searchPage -1)
     }
@@ -33,6 +31,13 @@ const SearchMain = function(props) {
 
   const onLastButton = function() {
     console.log('Last button')
+  }
+
+  const onEnterCustomPage = function(e) {
+    if (e.code === 'Enter' || e.code ==='NumpadEnter') {
+      search(searchEntry, customPage)
+    }
+
   }
 
   return (
@@ -54,6 +59,11 @@ const SearchMain = function(props) {
           <Button id="previousPage" onClick={onPreviousButton} variant="contained" size="large" color="primary">
             <ArrowBackIcon />
           </Button>
+          <TextField
+            size="dense"
+            type="number"
+            onKeyPress={onEnterCustomPage}
+            onChange={(e) => setCustomPage(e.target.value)}/>
           <Button id="nextPage" onClick={onNextButton} variant="contained" size="large" color="primary">
             <ArrowForwardIcon />
           </Button>
