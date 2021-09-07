@@ -63,6 +63,7 @@ function App() {
   }
 
   const search = function(searchInThingy, page) {
+    setSearchPage(page)
     setSearchEntry(searchInThingy)
     axios.get('/search', {
       params: {
@@ -116,7 +117,9 @@ function App() {
             searchResultList={searchResultList}
             updateList={updateList}
             searchEntry={searchEntry}
-            search={search}/>
+            search={search}
+            changeSearchPage={changeSearchPage}
+            searchPage={searchPage}/>
           :null}
         </Grid>
         <Grid item id="list" lg={3}>
