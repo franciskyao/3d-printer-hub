@@ -10,20 +10,29 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const SearchMain = function(props) {
   const [page, setPage] = useState(1);
+  const {search, searchEntry, searchPage, } = props
 
-  const onSearchEnter = function(e) {
+  //add custom page search
 
-    // axios.get('/search', {
-    //   params: {
-    //     search: props.searchEntry,
-    //     page: page,
-    //   }
-    // })
-    //   .then((results) => {
-    //     updateSearchList(results.data.hits)
-    //     changeMainDisplay('searchResults')
-    //   })
-    //   .catch((err) => console.log(err))
+  const onFirstButton = function() {
+    console.log('First button')
+    search(searchEntry, 1);
+  }
+
+  const onNextButton = function() {
+    console.log('Next button')
+    search(searchEntry, searchPage + 1)
+  }
+
+  const onPreviousButton = function() {
+    console.log('Previous button')
+    if (searchPage > 1) {
+      search(searchEntry, searchPage -1)
+    }
+  }
+
+  const onLastButton = function() {
+    console.log('Last button')
   }
 
   return (
@@ -38,17 +47,17 @@ const SearchMain = function(props) {
         ))}
 
         <Grid container md={12} justify="center">
-          <Button id="firstPage" onClick={onSearchEnter} variant="contained" size="large" color="primary">
+          <Button id="firstPage" onClick={onFirstButton} variant="contained" size="large" color="primary">
             <ArrowBackIosIcon />
             <ArrowBackIosIcon />
           </Button>
-          <Button id="previousPage" onClick={onSearchEnter} variant="contained" size="large" color="primary">
+          <Button id="previousPage" onClick={onPreviousButton} variant="contained" size="large" color="primary">
             <ArrowBackIcon />
           </Button>
-          <Button id="nextPage" onClick={onSearchEnter} variant="contained" size="large" color="primary">
+          <Button id="nextPage" onClick={onNextButton} variant="contained" size="large" color="primary">
             <ArrowForwardIcon />
           </Button>
-          <Button id="lastPage" onClick={onSearchEnter} variant="contained" size="large" color="primary">
+          <Button id="lastPage" onClick={onLastButton} variant="contained" size="large" color="primary">
             <ArrowForwardIosIcon />
             <ArrowForwardIosIcon />
           </Button>
