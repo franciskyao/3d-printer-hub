@@ -10,6 +10,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField';
 import SaveIcon from '@material-ui/icons/Save';
+import PropTypes from 'prop-types';
 
 const ProjectListMainCardTableRow = function(props) {
   const { id: partId,

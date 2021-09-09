@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ProjectListMainCard from './ProjectListMainCard.jsx';
+import PropTypes from 'prop-types';
 
 const ProjectListMain = function(props) {
   const {projectList} = props;

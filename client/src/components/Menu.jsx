@@ -1,5 +1,4 @@
 import React, { useState }  from 'react';
-import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,12 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-
-import mockData from './mockData.js';
+import PropTypes from 'prop-types';
 
 const drawerWidth = 240;
 const spacer = 64;
@@ -122,3 +116,8 @@ const Menu = function (props) {
 }
 
 export default Menu;
+
+Menu.propTypes = {
+  changeMainDisplay: PropTypes.func,
+  search: PropTypes.func,
+}

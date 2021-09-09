@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ProjectListMainCardTable from './ProjectListMainCardTable.jsx';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   media: {

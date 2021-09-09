@@ -12,6 +12,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Select from '@material-ui/core/Select';
 import SaveIcon from '@material-ui/icons/Save';
 import ProjectListMainCardTableRow from './ProjectListMainCardTableRow.jsx';
+import PropTypes from 'prop-types';
 
 import mockPart from './mockPart.js';
 

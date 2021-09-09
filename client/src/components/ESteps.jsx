@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ESteps (props) {
+function ESteps () {
   const [finalEsteps, setFinalEsteps] = useState(null);
   const classes = useStyles();
 

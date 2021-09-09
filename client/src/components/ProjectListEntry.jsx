@@ -8,6 +8,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import TabIcon from '@material-ui/icons/Tab';
+import PropTypes from 'prop-types';
 
 function ProjectListEntry (props) {
   const { id, proj_name, public_url: url, preview_image: img } = props.project
