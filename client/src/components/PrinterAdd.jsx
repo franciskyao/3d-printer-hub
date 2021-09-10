@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   textField: {
     width: '25ch',
   },
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PrinterAdd = function (props) {
-  const [ printerIp, setPrinterIp] = useState(null)
+  const [ printerIp, setPrinterIp] = useState(null);
   const { addPrinter } = props;
   const classes = useStyles();
 
@@ -40,11 +40,11 @@ const PrinterAdd = function (props) {
       </Button>
       <br />
     </>
-  )
-}
+  );
+};
 
 export default PrinterAdd;
 
 PrinterAdd.propTypes = {
   addPrinter: PropTypes.func,
-}
+};
