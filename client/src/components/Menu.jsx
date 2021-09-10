@@ -16,7 +16,7 @@ const spacer = 64;
 
 const capitalizeFirstLetter = function(word) {
   return word[0].toUpperCase() + word.slice(1);
-}
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
   },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
@@ -54,7 +53,7 @@ const Menu = function (props) {
     if (e.code === 'Enter' || e.code ==='NumpadEnter') {
       search(searchEntry, 1);
     }
-  }
+  };
 
   return (
     <div className={classes.root}>
@@ -120,4 +119,4 @@ export default Menu;
 Menu.propTypes = {
   changeMainDisplay: PropTypes.func,
   search: PropTypes.func,
-}
+};
