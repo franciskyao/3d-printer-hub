@@ -21,19 +21,19 @@ function App() {
 
   useEffect(() => {
     updateList();
-  }, [])
+  }, []);
 
   const changeMainDisplay = function(categoryToDisplay) {
-    setMainDisplay(categoryToDisplay)
-  }
+    setMainDisplay(categoryToDisplay);
+  };
 
   const changeSearchPage = function(pageNumber) {
-    setSearchPage(pageNumber)
-  }
+    setSearchPage(pageNumber);
+  };
 
   const search = function(searchInThingy, page) {
-    setSearchPage(page)
-    setSearchEntry(searchInThingy)
+    setSearchPage(page);
+    setSearchEntry(searchInThingy);
     axios.get('/search', {
       params: {
         search: searchInThingy,
@@ -41,27 +41,27 @@ function App() {
       }
     })
       .then((results) => {
-        setSearchResultList(results.data.hits)
-        changeMainDisplay('searchResults')
+        setSearchResultList(results.data.hits);
+        changeMainDisplay('searchResults');
       })
-      .catch((err) => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   const addPrinter = function (ip) {
     if (printerList.indexOf(ip) === -1) {
       const tempList = printerList.slice();
       tempList.push(ip);
       setPrinterList(tempList);
-      console.log(`Printer ${ip} added`)
+      console.log(`Printer ${ip} added`);
     }
-  }
+  };
 
   function updateList() {
     axios.get('/getmodels')
       .then((models) => {
         setDbList(models.data.rows);
       })
-      .catch(() => console.log('Failed to get projects'))
+      .catch(() => console.log('Failed to get projects'));
   }
 
   return (
@@ -103,7 +103,7 @@ function App() {
       <div id="main">
       </div>
     </>
-  )
+  );
 }
 
 export default App;
