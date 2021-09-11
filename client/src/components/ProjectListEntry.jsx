@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,17 +10,17 @@ import TabIcon from '@material-ui/icons/Tab';
 import PropTypes from 'prop-types';
 
 function ProjectListEntry (props) {
-  const { id, proj_name, public_url: url, preview_image: img } = props.project
+  const { id, proj_name, public_url: url} = props.project;
 
   const removeEntry = function() {
     axios.delete('/removeProject', {params: {id: id}})
-      .then((success) => props.updateList())
-      .catch((err) => console.log('Failed to remove project'))
-  }
+      .then(() => props.updateList())
+      .catch(() => console.log('Failed to remove project'));
+  };
 
   const placeHolderFunction = function() {
-    console.log('Delete icon is working')
-  }
+    console.log('Delete icon is working');
+  };
 
   return (
     <ListItem>
@@ -39,7 +38,18 @@ function ProjectListEntry (props) {
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
-  )
+  );
 }
 
 export default ProjectListEntry;
+
+ProjectListEntry.propTypes = {
+  project: PropTypes.object,
+  id: PropTypes.number,
+  proj_name: PropTypes.string,
+  public_url: PropTypes.string,
+  url: PropTypes.string,
+  preview_image: PropTypes.string,
+  img: PropTypes.string,
+  updateList: PropTypes.func,
+};

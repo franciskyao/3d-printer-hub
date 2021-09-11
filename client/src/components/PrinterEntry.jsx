@@ -5,14 +5,13 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import PropTypes from 'prop-types';
 
-const cardStyles = makeStyles((theme) => ({
+const cardStyles = makeStyles(() => ({
   root: {
     borderRadius: 15,
     width: 'auto',
     transition: '.8s',
     backgroundColor: '#f7fbff',
     '&:hover': {
-      // borderRadius: 50'
       boxShadow: '0 5px 5px 2px #00ACEE',
       transform: 'scale(1.05)'
     }
@@ -66,8 +65,6 @@ function PrinterEntry (props) {
 }
 
 export default PrinterEntry;
-
-
 
 PrinterEntry.propTypes = {
   printer: PropTypes.array,

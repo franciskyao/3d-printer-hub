@@ -14,16 +14,13 @@ const useStyles = makeStyles((theme) => ({
 
 function ESteps() {
   const [finalEsteps, setFinalEsteps] = useState(null);
-  const [currentEsteps, setCurrentEsteps] = useState(null);
-  const [targetLength, setTargetLength] = useState(null);
-  const [measuredLength, setMeasuredLength] = useState(null);
   const classes = useStyles();
 
   const calculate = function () {
     if (
-      currentEsteps &&
-      targetLength !== 0 &&
-      measuredLength
+      currentEsteps.value &&
+      targetLength.value !== 0 &&
+      measuredLength.value
     ) {
       const newEsteps =
         currentEsteps.value * (measuredLength.value / targetLength.value);
@@ -42,7 +39,7 @@ function ESteps() {
         helperText="Enter m503 command"
         margin="dense"
         variant="outlined"
-        onChange={(e) => setCurrentEsteps(e.target.value)}
+        onChange={calculate}
       />
       <br />
       <TextField
@@ -54,7 +51,7 @@ function ESteps() {
         helperText="Enter a length"
         margin="dense"
         variant="outlined"
-        onChange={(e) => setTargetLength(e.target.value)}
+        onChange={calculate}
       />
       <br />
       <TextField
@@ -67,7 +64,7 @@ function ESteps() {
         helperText="Use a ruler"
         margin="dense"
         variant="outlined"
-        onChange={(e) => setMeasuredLength(e.target.value)}
+        onChange={calculate}
       />
       <br />
       <br />

@@ -2,8 +2,8 @@ import React from 'react';
 import PrinterEntry from './PrinterEntry.jsx';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
-function PrinterList (props) {
 
+function PrinterList (props) {
   return (
     <Grid container spacing={2} id="printerList">
       {props.printerList && props.printerList.map((printer) =>

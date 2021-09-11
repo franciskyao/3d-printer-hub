@@ -19,7 +19,7 @@ const PrinterAdd = function (props) {
   const classes = useStyles();
 
   return (
-    <>
+    <div>
       <TextField
         className={classes.textField}
         required
@@ -39,7 +39,7 @@ const PrinterAdd = function (props) {
           Add Printer
       </Button>
       <br />
-    </>
+    </div>
   );
 };
 

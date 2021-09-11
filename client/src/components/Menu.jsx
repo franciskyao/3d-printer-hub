@@ -112,7 +112,7 @@ const Menu = function (props) {
       </Drawer>
     </div>
   );
-}
+};
 
 export default Menu;
 
