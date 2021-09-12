@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import ProjectListMainCardTable from './ProjectListMainCardTable.jsx';
@@ -11,7 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   media: {
     width: 100,
     height:100,
@@ -39,7 +38,11 @@ const ProjectListMainCard = function(props) {
     </CardActions>
     {shouldExpandPartsTable ? <ProjectListMainCardTable id={id}/> : null}
     </Card>
-  )
-}
+  );
+};
 
 export default ProjectListMainCard;
+
+ProjectListMainCard.propTypes = {
+  project: PropTypes.object,
+}

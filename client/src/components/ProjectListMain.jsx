@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react';
 import ProjectListMainCard from './ProjectListMainCard.jsx';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,11 @@ const ProjectListMain = function(props) {
       <ProjectListMainCard project={project} key={project.id} />
     ))}
     </>
-  )
-}
+  );
+};
 
 export default ProjectListMain;
+
+ProjectListMain.propTypes = {
+  projectList: PropTypes.array,
+};
