@@ -7,14 +7,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
-import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import Select from '@material-ui/core/Select';
 import SaveIcon from '@material-ui/icons/Save';
 import ProjectListMainCardTableRow from './ProjectListMainCardTableRow.jsx';
 import PropTypes from 'prop-types';
-
-import mockPart from './mockPart.js';
 
 const ProjectListMainCardTable = function(props) {
   const projectId = props.id;
@@ -31,8 +26,8 @@ const ProjectListMainCardTable = function(props) {
       }
     })
     .then((results) => setPartsList(results.data.rows))
-    .catch((err) => console.log(`failed to get parts of id: ${projectId}`))
-  }
+    .catch(() => console.log(`failed to get parts of id: ${projectId}`));
+  };
 
   const handleSaveButton = function() {
     if (newPartName && newPartAvailable && newPartNeeded) {
@@ -45,21 +40,21 @@ const ProjectListMainCardTable = function(props) {
           newPartComplete: newPartComplete,
         }
       })
-        .then((success) => {
+        .then(() => {
           updatePartsList();
-          setNewPartName('')
+          setNewPartName('');
           setNewPartAvailable(0);
           setNewPartNeeded(0);
         })
-        .catch((err) => console.log('Failed to add part'))
+        .catch(() => console.log('Failed to add part'));
     } else {
-      console.log('Incomplete entry')
+      console.log('Incomplete entry');
     }
-  }
+  };
 
   useEffect(()=> (
     updatePartsList()
-  ),[props.id])
+  ),[props.id]);
 
   return (
     <>
@@ -87,7 +82,7 @@ const ProjectListMainCardTable = function(props) {
                 margin="dense"
                 variant="outlined"
                 onChange={(e)=> {
-                  setNewPartName(e.target.value)
+                  setNewPartName(e.target.value);
                 }}
               />
             </TableCell>
@@ -99,7 +94,7 @@ const ProjectListMainCardTable = function(props) {
                 margin="dense"
                 variant="outlined"
                 onChange={(e)=> {
-                  setNewPartAvailable(e.target.value)
+                  setNewPartAvailable(e.target.value);
                 }}
               />
             </TableCell>
@@ -111,7 +106,7 @@ const ProjectListMainCardTable = function(props) {
                 margin="dense"
                 variant="outlined"
                 onChange={(e)=> {
-                  setNewPartNeeded(e.target.value)
+                  setNewPartNeeded(e.target.value);
                 }}
               />
             </TableCell>
@@ -126,7 +121,11 @@ const ProjectListMainCardTable = function(props) {
         </TableBody>
       </Table>
     </>
-  )
-}
+  );
+};
 
 export default ProjectListMainCardTable;
+
+ProjectListMainCardTable.propTypes = {
+  id: PropTypes.id,
+};
