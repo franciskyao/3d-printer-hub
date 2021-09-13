@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import CheckIcon from '@material-ui/icons/Check';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField';
 import SaveIcon from '@material-ui/icons/Save';
@@ -14,11 +12,9 @@ import PropTypes from 'prop-types';
 
 const ProjectListMainCardTableRow = function(props) {
   const { id: partId,
-    project_id: projectId,
     part_name: partName,
     part_available: partAvailable,
     part_needed: partNeeded,
-    part_complete: partComplete
   } = props.part;
 
   const [ isEditing, setIsEditing ] = useState(false);
@@ -28,9 +24,9 @@ const ProjectListMainCardTableRow = function(props) {
 
   const handleDeleteButton = function() {
     axios.delete('/removeAPart', {params: {id: partId}})
-      .then((success) => props.updatePartsList())
-      .catch((err) => console.log(`Failed to delete part ${partId}`))
-  }
+      .then(() => props.updatePartsList())
+      .catch(() => console.log(`Failed to delete part ${partId}`));
+  };
 
   const editPartSave = function() {
     let editedName;
@@ -41,36 +37,31 @@ const ProjectListMainCardTableRow = function(props) {
     if (newPartName === '') {
       editedName = partName;
     } else {
-      editedName = newPartName
+      editedName = newPartName;
     }
 
     if (newPartAvailable !== partAvailable) {
-      editedAvailable = newPartAvailable
+      editedAvailable = newPartAvailable;
     } else {
-      editedAvailable = partAvailable
+      editedAvailable = partAvailable;
     }
 
     if (newPartNeeded !== partNeeded) {
-      editedNeeded = newPartNeeded
+      editedNeeded = newPartNeeded;
     } else {
-      editedNeeded = partNeeded
+      editedNeeded = partNeeded;
     }
 
     if (newPartAvailable >= newPartNeeded) {
-      editedComplete = true
+      editedComplete = true;
     }
-    // const partId = urlParams.get('partId');
-    // const part_name = urlParams.get('newPartName');
-    // const part_available = urlParams.get('newPartAvailable');
-    // const part_needed = urlParams.get('newPartNeeded');
-    // const part_complete = urlParams.get('newPartComplete');
     console.log({
       partId,
       editedName,
       editedAvailable,
       editedNeeded,
       editedComplete,
-    })
+    });
     axios.get('/editAPart', {
       params: {
         partId: partId,
@@ -79,13 +70,13 @@ const ProjectListMainCardTableRow = function(props) {
         newPartNeeded: parseInt(editedNeeded),
         newPartComplete: editedComplete,
     }})
-      .then((success) => {
-        console.log('Successfully edited?')
-        props.updatePartsList()
-        setIsEditing(!isEditing)
+      .then(() => {
+        console.log('Successfully edited');
+        props.updatePartsList();
+        setIsEditing(!isEditing);
       })
-      .catch((err) => console.log(`Failed to update part ${newPartName}`))
-  }
+      .catch(() => console.log(`Failed to update part ${newPartName}`));
+  };
 
   if (isEditing) {
     return (
@@ -96,7 +87,7 @@ const ProjectListMainCardTableRow = function(props) {
             margin="dense"
             variant="outlined"
             onChange={(e)=> {
-              setNewPartName(e.target.value)
+              setNewPartName(e.target.value);
             }}
           />
         </TableCell>
@@ -107,7 +98,7 @@ const ProjectListMainCardTableRow = function(props) {
             margin="dense"
             variant="outlined"
             onChange={(e)=> {
-              setNewPartAvailable(e.target.value)
+              setNewPartAvailable(e.target.value);
             }}
           />
         </TableCell>
@@ -118,7 +109,7 @@ const ProjectListMainCardTableRow = function(props) {
             margin="dense"
             variant="outlined"
             onChange={(e)=> {
-              setNewPartNeeded(e.target.value)
+              setNewPartNeeded(e.target.value);
             }}
           />
         </TableCell>
@@ -130,7 +121,7 @@ const ProjectListMainCardTableRow = function(props) {
           </IconButton>
         </TableCell>
       </TableRow>
-    )
+    );
   } else {
     return (
       <TableRow>
@@ -147,9 +138,19 @@ const ProjectListMainCardTableRow = function(props) {
           </IconButton>
         </TableCell>
       </TableRow>
-    )
+    );
   }
-
-}
+};
 
 export default ProjectListMainCardTableRow;
+
+ProjectListMainCardTableRow.propTypes = {
+  part: PropTypes.object,
+  project_id: PropTypes.number,
+  projectId: PropTypes.number,
+  part_name: PropTypes.string,
+  part_available: PropTypes.number,
+  part_needed: PropTypes.number,
+  part_complete: PropTypes.boolean,
+  updatePartsList: PropTypes.func,
+};
