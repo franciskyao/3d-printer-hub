@@ -45,4 +45,4 @@ export default ProjectListMainCard;
 
 ProjectListMainCard.propTypes = {
   project: PropTypes.object,
-}
+};
