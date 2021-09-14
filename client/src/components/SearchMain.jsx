@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import SearchResultEntry from './SearchResultEntry.jsx'
+import React, { useState } from 'react';
+import SearchResultEntry from './SearchResultEntry.jsx';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -12,43 +11,40 @@ import PropTypes from 'prop-types';
 
 const SearchMain = function(props) {
   const [customPage, setCustomPage] = useState(1);
-  const {search, searchEntry, searchPage, } = props
-
-  //add custom page search
+  const {search, searchEntry, searchPage, } = props;
 
   const onFirstButton = function() {
     search(searchEntry, 1);
-  }
+  };
 
   const onNextButton = function() {
-    search(searchEntry, searchPage + 1)
-  }
+    search(searchEntry, searchPage + 1);
+  };
 
   const onPreviousButton = function() {
     if (searchPage > 1) {
-      search(searchEntry, searchPage -1)
+      search(searchEntry, searchPage -1);
     }
-  }
+  };
 
   const onLastButton = function() {
-    console.log('Last button')
-  }
+    console.log('Last button');
+  };
 
   const onEnterCustomPage = function(e) {
     if (e.code === 'Enter' || e.code ==='NumpadEnter') {
-      search(searchEntry, customPage)
+      search(searchEntry, customPage);
     }
-
-  }
+  };
 
   return (
     <Grid container>
       {props.searchResultList && props.searchResultList.map((entry) =>
-        (<Grid item md={4}>
+        (<Grid item md={4}
+          key={entry.id}>
           <SearchResultEntry
             entry={entry}
-            updateList={props.updateList}
-            key={entry.id}/>
+            updateList={props.updateList}/>
           </Grid>
         ))}
 
@@ -74,7 +70,15 @@ const SearchMain = function(props) {
           </Button>
         </Grid>
     </Grid>
-  )
-}
+  );
+};
 
 export default SearchMain;
+
+SearchMain.propTypes = {
+  search: PropTypes.func,
+  searchEntry: PropTypes.string,
+  searchPage: PropTypes.number,
+  searchResultList: PropTypes.array,
+  updateList: PropTypes.func
+};
