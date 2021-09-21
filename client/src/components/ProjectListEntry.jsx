@@ -24,13 +24,15 @@ function ProjectListEntry (props) {
 
   return (
     <ListItem>
-      <ListItemAvatar>
+      {/* <ListItemAvatar>
         <IconButton  onClick={placeHolderFunction} edge="end" aria-label="delete">
           <TabIcon/>
         </IconButton>
-      </ListItemAvatar>
+      </ListItemAvatar> */}
       <ListItemText
-        primary={<a href={url}>{proj_name}</a>}
+        primary={<a onClick={(e) => {
+          e.preventDefault()
+          window.open(url)}} href={url}>{proj_name}</a>}
       />
       <ListItemSecondaryAction>
         <IconButton  onClick={removeEntry} edge="end" aria-label="delete">
