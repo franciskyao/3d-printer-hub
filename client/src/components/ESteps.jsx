@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ESteps() {
   const [finalEsteps, setFinalEsteps] = useState(null);
+  const [estepsList, setEstepsList] = useState([]);
   const classes = useStyles();
 
   const calculate = function () {
@@ -27,6 +28,10 @@ function ESteps() {
       setFinalEsteps(newEsteps);
     }
   };
+
+  const saveEsteps = function() {
+
+  }
 
   return (
     <>
@@ -68,13 +73,14 @@ function ESteps() {
       />
       <br />
       <br />
-      {/* <Button className={classes.calculateButton}
-        onClick={handleCalculateButton}
+      <Button className={classes.calculateButton}
+        onClick={saveEsteps}
         variant="contained"
         color="primary">
-          Calculate
-      </Button> */}
+          Save e-steps
+      </Button>
       <p>Your new e-steps is: {finalEsteps && finalEsteps}</p>
+      {estepsList > 0 && estepsList.map((esteps) => <p>{esteps}</p>)}
     </>
   );
 }
