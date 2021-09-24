@@ -30,7 +30,8 @@ function ESteps() {
   };
 
   const saveEsteps = function() {
-
+    setEstepsList(oldArray => [...oldArray, finalEsteps.toFixed(3)])
+    console.log(estepsList)
   }
 
   return (
@@ -64,7 +65,7 @@ function ESteps() {
         label="Measured Length"
         id="measuredLength"
         type="number"
-        defaultValue="Default Value"
+        defaultValue={0}
         className={classes.textField}
         helperText="Use a ruler"
         margin="dense"
@@ -79,8 +80,9 @@ function ESteps() {
         color="primary">
           Save e-steps
       </Button>
-      <p>Your new e-steps is: {finalEsteps && finalEsteps}</p>
-      {estepsList > 0 && estepsList.map((esteps) => <p>{esteps}</p>)}
+      <p>Your new e-steps is: {finalEsteps && finalEsteps.toFixed(3)}</p>
+      <p>Your Previous e-steps are: </p>
+      {estepsList.length > 0 && estepsList.map((esteps) => <p key={esteps}>{esteps}</p>)}
     </>
   );
 }
