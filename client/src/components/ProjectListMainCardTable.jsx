@@ -127,5 +127,5 @@ const ProjectListMainCardTable = function(props) {
 export default ProjectListMainCardTable;
 
 ProjectListMainCardTable.propTypes = {
-  id: PropTypes.id,
+  id: PropTypes.number,
 };

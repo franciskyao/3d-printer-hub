@@ -151,6 +151,6 @@ ProjectListMainCardTableRow.propTypes = {
   part_name: PropTypes.string,
   part_available: PropTypes.number,
   part_needed: PropTypes.number,
-  part_complete: PropTypes.boolean,
+  part_complete: PropTypes.bool,
   updatePartsList: PropTypes.func,
 };
