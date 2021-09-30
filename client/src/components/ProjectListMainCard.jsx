@@ -9,6 +9,7 @@ import ProjectListMainCardTable from './ProjectListMainCardTable.jsx';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(() => ({
   media: {
@@ -23,21 +24,25 @@ const ProjectListMainCard = function(props) {
   const classes = useStyles();
 
   return (
-    <Card>
-    <CardHeader
-      title={projName}
-    />
-    <CardMedia
-      image={previewImage}
-      className={classes.media}
-    />
-    <CardActions>
-      <IconButton onClick={()=> (setShouldExpandPartsTable(!shouldExpandPartsTable))}>
-        {shouldExpandPartsTable ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-      </IconButton>
-    </CardActions>
-    {shouldExpandPartsTable ? <ProjectListMainCardTable id={id}/> : null}
+    <Grid item md={12} spacing={1}>
+    <Card
+      // raised="true"
+    >
+      <CardHeader
+        title={projName}
+      />
+      <CardMedia
+        image={previewImage}
+        className={classes.media}
+      />
+      <CardActions>
+        <IconButton onClick={()=> (setShouldExpandPartsTable(!shouldExpandPartsTable))}>
+          {shouldExpandPartsTable ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </IconButton>
+      </CardActions>
+      {shouldExpandPartsTable ? <ProjectListMainCardTable id={id}/> : null}
     </Card>
+    </Grid>
   );
 };
 
