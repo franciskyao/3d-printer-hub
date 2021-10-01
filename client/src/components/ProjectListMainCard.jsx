@@ -26,7 +26,7 @@ const ProjectListMainCard = function(props) {
   return (
     <Grid item md={12} spacing={1}>
     <Card
-      // raised="true"
+      raised="true"
     >
       <CardHeader
         title={projName}
