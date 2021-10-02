@@ -24,11 +24,6 @@ function ProjectListEntry (props) {
 
   return (
     <ListItem>
-      {/* <ListItemAvatar>
-        <IconButton  onClick={placeHolderFunction} edge="end" aria-label="delete">
-          <TabIcon/>
-        </IconButton>
-      </ListItemAvatar> */}
       <ListItemText
         primary={<a onClick={(e) => {
           e.preventDefault()
