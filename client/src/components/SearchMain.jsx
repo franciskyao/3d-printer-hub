@@ -38,7 +38,7 @@ const SearchMain = function(props) {
   };
 
   return (
-    <Grid container>
+    <Grid container spacing={1}>
       {props.searchResultList && props.searchResultList.map((entry) =>
         (<Grid item md={4}
           key={entry.id}>
@@ -48,7 +48,7 @@ const SearchMain = function(props) {
           </Grid>
         ))}
 
-        <Grid container md={12} justify="center">
+        <Grid container justify="center">
           <Button id="firstPage" onClick={onFirstButton} variant="contained" size="large" color="primary">
             <ArrowBackIosIcon />
             <ArrowBackIosIcon />
