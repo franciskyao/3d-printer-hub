@@ -90,6 +90,6 @@ const SearchResultEntry = function (props) {
 export default SearchResultEntry;
 
 SearchResultEntry.propTypes= {
-  entry: PropTypes.func,
+  entry: PropTypes.object,
   updateList: PropTypes.func,
 };
